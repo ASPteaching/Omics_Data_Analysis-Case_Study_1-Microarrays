@@ -1,0 +1,9 @@
+"ID","Description","GeneRatio","BgRatio","pvalue","p.adjust","qvalue","geneID","Count"
+"R-MMU-1483249","Inositol phosphate metabolism","7/201","46/8698",7.89861917854937e-05,0.017210532182374,0.01583064199756,"Isyna1/Nudt4/Inpp5d/Pld4/Plcb3/Plcb2/Plcb1",7
+"R-MMU-400451","Free fatty acids regulate insulin secretion","4/201","11/8698",8.0423047581187e-05,0.017210532182374,0.01583064199756,"Plcb3/Plcb2/Acsl4/Plcb1",4
+"R-MMU-977606","Regulation of Complement cascade","6/201","37/8698",0.000180699532427207,0.0208895657554835,0.0192147014081427,"Cpn2/C1qb/C3ar1/Cfh/C1qc/C1qa",6
+"R-MMU-112043","PLC beta mediated events","6/201","38/8698",0.000210497172826187,0.0208895657554835,0.0192147014081427,"Prkcd/Adcy5/Plcb3/Gnai1/Plcb2/Plcb1",6
+"R-MMU-112040","G-protein mediated events","6/201","39/8698",0.000244036983124808,0.0208895657554835,0.0192147014081427,"Prkcd/Adcy5/Plcb3/Gnai1/Plcb2/Plcb1",6
+"R-MMU-1855204","Synthesis of IP3 and IP4 in the cytosol","5/201","27/8698",0.000334436072838291,0.0238564398624648,0.0219437002178107,"Inpp5d/Pld4/Plcb3/Plcb2/Plcb1",5
+"R-MMU-422356","Regulation of insulin secretion","7/201","59/8698",0.000390668647929405,0.0238865973305408,0.0219714397482102,"Cacna1a/Adcy5/Plcb3/Gnai1/Plcb2/Acsl4/Plcb1",7
+"R-MMU-166658","Complement cascade","6/201","48/8698",0.000772426387126054,0.0413248117112439,0.0380115090506769,"Cpn2/C1qb/C3ar1/Cfh/C1qc/C1qa",6
