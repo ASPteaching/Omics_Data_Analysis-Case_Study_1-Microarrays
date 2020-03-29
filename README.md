@@ -3,8 +3,9 @@ This repository contains an example of how to analyze microarrays data using bio
 
 It is based on a Chapter on Microarray Data Analysis, written by Ricardo Gonzalo and myself, published in the book "Microarray Bioinformatics" edited by V. Bolon and Canedo in 2019.
 
-In order to simplify the re-use of code I have broken the original document in two parts that I have renamed MDA1 and MDA2 (available soon). For each of this names there are three files available (familiarity with Rmarkdown and knittr is assumed)
+The original RMarkdown document was intended to create a Word document, which was something required by the journal. This is no so anymore -who might want to create anything in Word?
+Right now there are two -almost identical- Rmarkdown and html files
 
-* MDA?.Rmd: The Rmarkdown file to be run ("knitted" to be exact) 
-* MDA?.html: The html output btained from knitting the previous markdown
-* MDA?.R : The R code extracted from the markdown file with the instruction `purl` from the `kntr` package.
+- File(s) "Case_Study_1-Microarrays_Analysis.*" generate a nicer html document but where cross-references to figures and tables  don't work
+- File(s) "Case_Study_1-Microarrays_Analysis-Bookdown.*" generate a not-so-clean html document but with cross-references to figures and tables working. As soon as I can make this version look nicer it will be the only one in the site.
+

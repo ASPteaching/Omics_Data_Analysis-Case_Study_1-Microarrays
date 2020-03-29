@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Materials | Statistical Analysis of Microarray data</title>
+  <meta name="description" content="3 Materials | Statistical Analysis of Microarray data" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Materials | Statistical Analysis of Microarray data" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Materials | Statistical Analysis of Microarray data" />
+  
+  
+  
+
+<meta name="author" content="Based on Gonzalo, Ricardo and Sanchez-Pla, Alex (2019)" />
+
+
+<meta name="date" content="2020-03-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="methods.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="summaryabstract.html"><a href="summaryabstract.html"><i class="fa fa-check"></i><b>1</b> Summary/Abstract</a><ul>
+<li class="chapter" data-level="1.1" data-path="summaryabstract.html"><a href="summaryabstract.html#key-words"><i class="fa fa-check"></i><b>1.1</b> Key Words</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="materials.html"><a href="materials.html"><i class="fa fa-check"></i><b>3</b> Materials</a><ul>
+<li class="chapter" data-level="3.1" data-path="materials.html"><a href="materials.html#software"><i class="fa fa-check"></i><b>3.1</b> Software</a></li>
+<li class="chapter" data-level="3.2" data-path="materials.html"><a href="materials.html#data"><i class="fa fa-check"></i><b>3.2</b> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a><ul>
+<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#environment-preparation"><i class="fa fa-check"></i><b>4.1</b> Environment preparation:</a></li>
+<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#prepare-the-data-for-the-analysis"><i class="fa fa-check"></i><b>4.2</b> Prepare the data for the analysis</a></li>
+<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#packages-installation-in-r"><i class="fa fa-check"></i><b>4.3</b> Packages installation in R</a></li>
+<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#read-the-cel-files"><i class="fa fa-check"></i><b>4.4</b> Read the CEL files</a></li>
+<li class="chapter" data-level="4.5" data-path="methods.html"><a href="methods.html#quality-control-of-raw-data"><i class="fa fa-check"></i><b>4.5</b> Quality control of raw data</a></li>
+<li class="chapter" data-level="4.6" data-path="methods.html"><a href="methods.html#data-normalization"><i class="fa fa-check"></i><b>4.6</b> Data normalization</a></li>
+<li class="chapter" data-level="4.7" data-path="methods.html"><a href="methods.html#quality-control-of-normalized-data"><i class="fa fa-check"></i><b>4.7</b> Quality control of normalized data</a></li>
+<li class="chapter" data-level="4.8" data-path="methods.html"><a href="methods.html#batch-detection"><i class="fa fa-check"></i><b>4.8</b> Batch detection</a></li>
+<li class="chapter" data-level="4.9" data-path="methods.html"><a href="methods.html#detecting-most-variable-genes"><i class="fa fa-check"></i><b>4.9</b> Detecting most variable genes</a></li>
+<li class="chapter" data-level="4.10" data-path="methods.html"><a href="methods.html#filtering-least-variable-genes"><i class="fa fa-check"></i><b>4.10</b> Filtering least variable genes</a></li>
+<li class="chapter" data-level="4.11" data-path="methods.html"><a href="methods.html#saving-normalized-and-filtered-data"><i class="fa fa-check"></i><b>4.11</b> Saving normalized and filtered data</a></li>
+<li class="chapter" data-level="4.12" data-path="methods.html"><a href="methods.html#defining-the-experimental-setup-the-design-matrix"><i class="fa fa-check"></i><b>4.12</b> Defining the experimental setup: The design matrix</a></li>
+<li class="chapter" data-level="4.13" data-path="methods.html"><a href="methods.html#defining-comparisons-with-the-contrasts-matrix"><i class="fa fa-check"></i><b>4.13</b> Defining comparisons with the Contrasts Matrix</a></li>
+<li class="chapter" data-level="4.14" data-path="methods.html"><a href="methods.html#model-estimation-and-gene-selection"><i class="fa fa-check"></i><b>4.14</b> Model estimation and gene selection</a></li>
+<li class="chapter" data-level="4.15" data-path="methods.html"><a href="methods.html#obtaining-lists-of-differentially-expressed-genes"><i class="fa fa-check"></i><b>4.15</b> Obtaining lists of differentially expressed genes</a></li>
+<li class="chapter" data-level="4.16" data-path="methods.html"><a href="methods.html#gene-annotation"><i class="fa fa-check"></i><b>4.16</b> Gene Annotation</a></li>
+<li class="chapter" data-level="4.17" data-path="methods.html"><a href="methods.html#visualizing-differential-expression"><i class="fa fa-check"></i><b>4.17</b> Visualizing differential expression</a></li>
+<li class="chapter" data-level="4.18" data-path="methods.html"><a href="methods.html#multiple-comparisons"><i class="fa fa-check"></i><b>4.18</b> Multiple Comparisons</a></li>
+<li class="chapter" data-level="4.19" data-path="methods.html"><a href="methods.html#heatmaps"><i class="fa fa-check"></i><b>4.19</b> Heatmaps</a></li>
+<li class="chapter" data-level="4.20" data-path="methods.html"><a href="methods.html#biological-significance-of-results"><i class="fa fa-check"></i><b>4.20</b> Biological Significance of results</a></li>
+<li class="chapter" data-level="4.21" data-path="methods.html"><a href="methods.html#summary-of-results"><i class="fa fa-check"></i><b>4.21</b> Summary of results</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="notes.html"><a href="notes.html"><i class="fa fa-check"></i><b>5</b> Notes</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of Microarray data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="materials" class="section level1">
+<h1><span class="header-section-number">3</span> Materials</h1>
+<p>In this section we list all the materials needed to perform a microarray data analysis. The document is adapted from @<span class="citation">Gonzalo Sanz and Sánchez-Pla (<a href="#ref-GonzaloSanz2019">2019</a>)</span>, by the same authors.</p>
+<div id="software" class="section level2">
+<h2><span class="header-section-number">3.1</span> Software</h2>
+<p>First of all it is needed to install the software to perform all the required calculations.</p>
+<p>There are many options are available <span class="citation">Mehta and Rani (<a href="#ref-Mehta2011">2011</a>)</span> but one of the most common approaches is to use the <strong>R statistical software</strong>. R can be downloaded from its web page (<a href="https://cran.r-project.org/index.html" class="uri">https://cran.r-project.org/index.html</a>) and installed following the instructions described there. The microarray analysis presented in this chapter has been performed with the latest version of R which, at the moment of writing, was 3.4.4.</p>
+<p>R is a console based software. Its use can be facilitated with an additional interface called “R-Studio”. It can be downloaded and installed following the instructions listed in its web page: <a href="https://www.rstudio.com/" class="uri">https://www.rstudio.com/</a>. Although its use is not compulsory for reproducing the analyses in this chapter it is highly recommended to work with R using this interface.</p>
+<p>When working with R it is often required to use some functions not available in the basic installation. This can be done by installing additional libraries, also called “packages”, developed by the scientific community. Most packages used for the analysis of high throughput genomic data are part of the Bioconductor project which started with a few packages in 2002 and has now more than one thousand (<a href="https://www.bioconductor.org/" class="uri">https://www.bioconductor.org/</a>). Indeed Bioconductor has become the state-of-the-art way to analyze microarray and other omics data and it has grown from hardly a dozen packages in 2002 to the current number of more than one thousand. The analysis presented have been performed using Bioconductor version 3.6.</p>
+<p>R and Bioconductor are open source free software. This has many advantages but it may sometimes be a problem, especially when new functionalities are not compatible with previous versions (see Note 1).</p>
+<p>Table <a href="#tab:packagesList"><strong>??</strong></a> shows the packages needed for the analysis presented in this chapter. The table contains the name, the source and a short description of all the packages that have to be install to run the current case study. In the following section we will show the code necessary to install all of them.</p>
+</div>
+<div id="data" class="section level2">
+<h2><span class="header-section-number">3.2</span> Data</h2>
+<p>This protocol is applied on a dataset from a published study <span class="citation">Li et al. (<a href="#ref-LiE7111">2017</a>)</span>. The data had been uploaded into the Gene Expression Omnibus (GEO) database, an international public repository that archives and freely distributes high-throughput gene expression and other functional genomics data sets <span class="citation">Clough and Barrett (<a href="#ref-Clough2016">2016</a>)</span>. The dataset selected is identified with the accession number: <strong>GSE100924</strong>.</p>
+<p>The study that generated the data investigated the function of gene <code>ZBTB7B</code> (<a href="http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZBTB7B" class="uri">http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZBTB7B</a>). This gene activates the thermogenic gene program during brown and beige adipocyte differentiation regulating brown fat gene expression at ambient room temperature and following cold exposure. The experiment compared 10 weeks old mice with the gene deactivated (“KO” or knockout) or not (“WT” or Wild type) at two different temperatures, ambient room temperature (RT, <span class="math inline">\(22^{\circ}\)</span>C) or following cold exposure (COLD, <span class="math inline">\(4^{\circ}\)</span>C) for 4 hrs. That is, it was a <span class="math inline">\(2\times2\)</span> factorial design (genotype and temperature) with two levels each (wild type and knock out, for genotype, and room temperature and cold, for temperature). The sample size of the experiment is 12 samples, three replicates of each group.</p>
+<p>The microarrays used for this experiment were of type Mouse Gene 2.1 from Affymetrix, now Thermofisher, one of the most popular vendors of microarray technology.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Clough2016">
+<p>Clough, Emily, and Tanya Barrett. 2016. “The Gene Expression Omnibus Database.” In <em>Methods in Molecular Biology (Clifton, N.j.)</em>, 1418:93–110. <a href="https://doi.org/10.1007/978-1-4939-3578-9_5">https://doi.org/10.1007/978-1-4939-3578-9_5</a>.</p>
+</div>
+<div id="ref-GonzaloSanz2019">
+<p>Gonzalo Sanz, Ricardo, and Alex Sánchez-Pla. 2019. “Statistical Analysis of Microarray Data.” In <em>Microarray Bioinformatics</em>, edited by Verónica Bolón-Canedo and Amparo Alonso-Betanzos, 87–121. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-1-4939-9442-7_5">https://doi.org/10.1007/978-1-4939-9442-7_5</a>.</p>
+</div>
+<div id="ref-LiE7111">
+<p>Li, Siming, Lin Mi, Lei Yu, Qi Yu, Tongyu Liu, Guo-Xiao Wang, Xu-Yun Zhao, Jun Wu, and Jiandie D. Lin. 2017. “Zbtb7b Engages the Long Noncoding Rna Blnc1 to Drive Brown and Beige Fat Development and Thermogenesis.” <em>Proceedings of the National Academy of Sciences</em> 114 (34). National Academy of Sciences: E7111–E7120. <a href="https://doi.org/10.1073/pnas.1703494114">https://doi.org/10.1073/pnas.1703494114</a>.</p>
+</div>
+<div id="ref-Mehta2011">
+<p>Mehta, Jai Prakash, and Sweta Rani. 2011. “Software and Tools for Microarray Data Analysis.” In <em>Methods in Molecular Biology (Clifton, N.j.)</em>, 784:41–53. <a href="https://doi.org/10.1007/978-1-61779-289-2_4">https://doi.org/10.1007/978-1-61779-289-2_4</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

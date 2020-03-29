@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Methods | Statistical Analysis of Microarray data</title>
+  <meta name="description" content="4 Methods | Statistical Analysis of Microarray data" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Methods | Statistical Analysis of Microarray data" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Methods | Statistical Analysis of Microarray data" />
+  
+  
+  
+
+<meta name="author" content="Based on Gonzalo, Ricardo and Sanchez-Pla, Alex (2019)" />
+
+
+<meta name="date" content="2020-03-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="materials.html"/>
+<link rel="next" href="notes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="summaryabstract.html"><a href="summaryabstract.html"><i class="fa fa-check"></i><b>1</b> Summary/Abstract</a><ul>
+<li class="chapter" data-level="1.1" data-path="summaryabstract.html"><a href="summaryabstract.html#key-words"><i class="fa fa-check"></i><b>1.1</b> Key Words</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="materials.html"><a href="materials.html"><i class="fa fa-check"></i><b>3</b> Materials</a><ul>
+<li class="chapter" data-level="3.1" data-path="materials.html"><a href="materials.html#software"><i class="fa fa-check"></i><b>3.1</b> Software</a></li>
+<li class="chapter" data-level="3.2" data-path="materials.html"><a href="materials.html#data"><i class="fa fa-check"></i><b>3.2</b> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a><ul>
+<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#environment-preparation"><i class="fa fa-check"></i><b>4.1</b> Environment preparation:</a></li>
+<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#prepare-the-data-for-the-analysis"><i class="fa fa-check"></i><b>4.2</b> Prepare the data for the analysis</a></li>
+<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#packages-installation-in-r"><i class="fa fa-check"></i><b>4.3</b> Packages installation in R</a></li>
+<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#read-the-cel-files"><i class="fa fa-check"></i><b>4.4</b> Read the CEL files</a></li>
+<li class="chapter" data-level="4.5" data-path="methods.html"><a href="methods.html#quality-control-of-raw-data"><i class="fa fa-check"></i><b>4.5</b> Quality control of raw data</a></li>
+<li class="chapter" data-level="4.6" data-path="methods.html"><a href="methods.html#data-normalization"><i class="fa fa-check"></i><b>4.6</b> Data normalization</a></li>
+<li class="chapter" data-level="4.7" data-path="methods.html"><a href="methods.html#quality-control-of-normalized-data"><i class="fa fa-check"></i><b>4.7</b> Quality control of normalized data</a></li>
+<li class="chapter" data-level="4.8" data-path="methods.html"><a href="methods.html#batch-detection"><i class="fa fa-check"></i><b>4.8</b> Batch detection</a></li>
+<li class="chapter" data-level="4.9" data-path="methods.html"><a href="methods.html#detecting-most-variable-genes"><i class="fa fa-check"></i><b>4.9</b> Detecting most variable genes</a></li>
+<li class="chapter" data-level="4.10" data-path="methods.html"><a href="methods.html#filtering-least-variable-genes"><i class="fa fa-check"></i><b>4.10</b> Filtering least variable genes</a></li>
+<li class="chapter" data-level="4.11" data-path="methods.html"><a href="methods.html#saving-normalized-and-filtered-data"><i class="fa fa-check"></i><b>4.11</b> Saving normalized and filtered data</a></li>
+<li class="chapter" data-level="4.12" data-path="methods.html"><a href="methods.html#defining-the-experimental-setup-the-design-matrix"><i class="fa fa-check"></i><b>4.12</b> Defining the experimental setup: The design matrix</a></li>
+<li class="chapter" data-level="4.13" data-path="methods.html"><a href="methods.html#defining-comparisons-with-the-contrasts-matrix"><i class="fa fa-check"></i><b>4.13</b> Defining comparisons with the Contrasts Matrix</a></li>
+<li class="chapter" data-level="4.14" data-path="methods.html"><a href="methods.html#model-estimation-and-gene-selection"><i class="fa fa-check"></i><b>4.14</b> Model estimation and gene selection</a></li>
+<li class="chapter" data-level="4.15" data-path="methods.html"><a href="methods.html#obtaining-lists-of-differentially-expressed-genes"><i class="fa fa-check"></i><b>4.15</b> Obtaining lists of differentially expressed genes</a></li>
+<li class="chapter" data-level="4.16" data-path="methods.html"><a href="methods.html#gene-annotation"><i class="fa fa-check"></i><b>4.16</b> Gene Annotation</a></li>
+<li class="chapter" data-level="4.17" data-path="methods.html"><a href="methods.html#visualizing-differential-expression"><i class="fa fa-check"></i><b>4.17</b> Visualizing differential expression</a></li>
+<li class="chapter" data-level="4.18" data-path="methods.html"><a href="methods.html#multiple-comparisons"><i class="fa fa-check"></i><b>4.18</b> Multiple Comparisons</a></li>
+<li class="chapter" data-level="4.19" data-path="methods.html"><a href="methods.html#heatmaps"><i class="fa fa-check"></i><b>4.19</b> Heatmaps</a></li>
+<li class="chapter" data-level="4.20" data-path="methods.html"><a href="methods.html#biological-significance-of-results"><i class="fa fa-check"></i><b>4.20</b> Biological Significance of results</a></li>
+<li class="chapter" data-level="4.21" data-path="methods.html"><a href="methods.html#summary-of-results"><i class="fa fa-check"></i><b>4.21</b> Summary of results</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="notes.html"><a href="notes.html"><i class="fa fa-check"></i><b>5</b> Notes</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of Microarray data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methods" class="section level1">
+<h1><span class="header-section-number">4</span> Methods</h1>
+<div id="environment-preparation" class="section level2">
+<h2><span class="header-section-number">4.1</span> Environment preparation:</h2>
+<p>In a microarray data analysis project, data analyst will have to manage a lot of files, including the files with the raw data (.CEL files) and the files generated during the analysis of them. For this reason, it is very advisable to define some folders before beginning with the analysis to try to not get lost, if all the files go to the same folder. We strongly recommend that user creates the following folders:</p>
+<ul>
+<li>A main folder that will be the “working directory” called for example “MicroarraysAnalysis”</li>
+<li>A folder called, for example <strong>data</strong> located within the working directory: Here we will save all the <em>.CEL</em> files and the <em>targets</em> file with information on the covariates, described in next section.</li>
+<li>A folder called, for example <strong>results</strong> located within the working directory: Here we will send all the results obtained in the microarray analysis.</li>
+</ul>
+<p>The following commands create the desired folders. This can be made from within R as described, or using a visual file browser such as Windows File Explorer or any other (in that case you can omit this step):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">setwd</span>(<span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">dir.create</span>(<span class="st">&quot;results&quot;</span>)</a></code></pre></div>
+<p>The code for running this analysis, that can be easily adapted to run similar studies can be downloaded from a github repository specifically devoted to this chapter. In the following sections it is assumed that such code has been downloaded and copied into the working directory. The url for the repository is: <a href="https://github.com/alexsanchezpla/StatisticalAnalysisOfMicroarrayData">https://github.com/alexsanchezpla/StatisticalAnalysisOfMicroarrayData</a>.</p>
+<p>Once it is saved, open R-Studio, open the file with the R code, and in R-Studio go to the menu option in the top “Session -&gt; Set working directory -&gt; To source file location”. This action will set the folder we have set as “main” folder as our working directory</p>
+</div>
+<div id="prepare-the-data-for-the-analysis" class="section level2">
+<h2><span class="header-section-number">4.2</span> Prepare the data for the analysis</h2>
+<p>The data for the analysis will be provided as two types of files, the “CEL”&quot; files and the “targets” file.</p>
+<p>CEL files are the files with the “raw data” originated after microarray scanning and preprocessing with Affymetrix software. This files need to be saved into the <strong>data</strong> folder. Usually one expectes to have a .CEL file for each sample in the experiment.</p>
+<p>Another file needed for the analysis is the <em>targets</em> file, which contains the information on groups and covariates. That is, this file relates the name of each .CEL file with their condition in the experiment. We can use the targets to retain all the information valuable for the analysis like other covariables.</p>
+<p>Although the targets file need not have any fixed names it is practical to use its column names to create labels that will be used later. For example:</p>
+<ul>
+<li>Column called <em>FileName</em>: It may contain the exact name of the CEL files in the data folder</li>
+<li>Column called <em>Group</em>: It may summarize the conditions in the experiment for that sample.</li>
+<li>Column called <em>ShortName</em>: It may be used to store a short label of the sample useful for some plots.</li>
+<li>There may be other columns to store covariables in the study such as sex, age, etc.</li>
+</ul>
+<p>For this analysis, targets file has been saved in .csv format, separated by semicolon, although any other format that works for delimited text files might have been used (see Note 2). Table <a href="methods.html#tab:ReadTargets">4.1</a> shows the contents of the targets file used in this analysis.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>targets &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;./data/targets.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>) </a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="op">+</span><span class="st">   </span>targets, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="op">+</span><span class="st">   </span><span class="dt">caption =</span> <span class="st">&#39;Content of the targets file used for the current analysis&#39;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:ReadTargets">Table 4.1: </span>Content of the targets file used for the current analysis</caption>
+<thead>
+<tr class="header">
+<th align="left">FileName</th>
+<th align="left">Group</th>
+<th align="left">Genotype</th>
+<th align="left">Temperature</th>
+<th align="left">ShortName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">GSM2696488_WT_RT_1.CEL</td>
+<td align="left">WT.RT</td>
+<td align="left">WT</td>
+<td align="left">RT</td>
+<td align="left">WT.RT.1</td>
+</tr>
+<tr class="even">
+<td align="left">GSM2696489_WT_RT_2.CEL</td>
+<td align="left">WT.RT</td>
+<td align="left">WT</td>
+<td align="left">RT</td>
+<td align="left">WT.RT.2</td>
+</tr>
+<tr class="odd">
+<td align="left">GSM2696490_WT_RT_3.CEL</td>
+<td align="left">WT.RT</td>
+<td align="left">WT</td>
+<td align="left">RT</td>
+<td align="left">WT.RT.3</td>
+</tr>
+<tr class="even">
+<td align="left">GSM2696491_KO_RT_1.CEL</td>
+<td align="left">KO.RT</td>
+<td align="left">KO</td>
+<td align="left">RT</td>
+<td align="left">KO.RT.1</td>
+</tr>
+<tr class="odd">
+<td align="left">GSM2696492_KO_RT_2.CEL</td>
+<td align="left">KO.RT</td>
+<td align="left">KO</td>
+<td align="left">RT</td>
+<td align="left">KO.RT.2</td>
+</tr>
+<tr class="even">
+<td align="left">GSM2696493_KO_RT_3.CEL</td>
+<td align="left">KO.RT</td>
+<td align="left">KO</td>
+<td align="left">RT</td>
+<td align="left">KO.RT.3</td>
+</tr>
+<tr class="odd">
+<td align="left">GSM2696494_WT_Cold_1.CEL</td>
+<td align="left">WT.COLD</td>
+<td align="left">WT</td>
+<td align="left">COLD</td>
+<td align="left">WT.COLD.1</td>
+</tr>
+<tr class="even">
+<td align="left">GSM2696495_WT_Cold_2.CEL</td>
+<td align="left">WT.COLD</td>
+<td align="left">WT</td>
+<td align="left">COLD</td>
+<td align="left">WT.COLD.2</td>
+</tr>
+<tr class="odd">
+<td align="left">GSM2696496_WT_Cold_3.CEL</td>
+<td align="left">WT.COLD</td>
+<td align="left">WT</td>
+<td align="left">COLD</td>
+<td align="left">WT.COLD.3</td>
+</tr>
+<tr class="even">
+<td align="left">GSM2696497_KO_Cold_1.CEL</td>
+<td align="left">KO.COLD</td>
+<td align="left">KO</td>
+<td align="left">COLD</td>
+<td align="left">KO.COLD.1</td>
+</tr>
+<tr class="odd">
+<td align="left">GSM2696498_KO_Cold_2.CEL</td>
+<td align="left">KO.COLD</td>
+<td align="left">KO</td>
+<td align="left">COLD</td>
+<td align="left">KO.COLD.2</td>
+</tr>
+<tr class="even">
+<td align="left">GSM2696499_KO_Cold_3.CEL</td>
+<td align="left">KO.COLD</td>
+<td align="left">KO</td>
+<td align="left">COLD</td>
+<td align="left">KO.COLD.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="packages-installation-in-r" class="section level2">
+<h2><span class="header-section-number">4.3</span> Packages installation in R</h2>
+<p>Packages not available in the basic R installation need to be installed before the analysis can be done (see Note 3).</p>
+<p>As commented in <em>Materials</em> section, packages needed to do the study, may be downloaded from distinct repositories. The most common ones will be CRAN for standard packages or Bioconductor for Bioconductor packages.</p>
+<p>Standard R packages can be downloades and installed from default repositories with the <code>install.packages</code> function.
+Bioconductor packages can be downloaded and installed with the function <code>install()</code> from the <code>BiocManager</code> package.</p>
+<p>The code below will download and install the packages needed for the analysis. Note that <strong>this code must be executed only once</strong>. Subsequent executions of the analysis do not need to re-install the packages:</p>
+<p>The first chunk makes a fresh install of basic bioconductor packages.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="op">+</span><span class="st">     </span><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
+<p>The second chunk installs packages specifically needed for this study.Some packages may require compilation, so a good idea if you are not working on a linux machine, is to have <code>Rtools</code> installed. This can be downladed from <a href="https://cran.r-project.org/bin/windows/Rtools/">https://cran.r-project.org/bin/windows/Rtools/</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;colorspace&quot;</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;gplots&quot;</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;ggrepel&quot;</span>)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;htmlTable&quot;</span>)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;prettydoc&quot;</span>)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="op">&gt;</span><span class="st"> </span><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;oligo&quot;</span>)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;pd.mogene.2.1.st&quot;</span>)</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;arrayQualityMetrics&quot;</span>)</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;pvca&quot;</span>)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="op">&gt;</span><span class="st"> </span><span class="co"># NOT NEEDED UNTIL ANALYSES ARE PERFORMED</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="er">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;limma&quot;</span>)</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;genefilter&quot;</span>)</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;mogene21sttranscriptcluster.db&quot;</span>)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;annotate&quot;</span>)</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;org.Mm.eg.db&quot;</span>)</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;ReactomePA&quot;</span>)</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="op">&gt;</span><span class="st"> </span>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;reactome.db&quot;</span>)</a></code></pre></div>
+</div>
+<div id="read-the-cel-files" class="section level2">
+<h2><span class="header-section-number">4.4</span> Read the CEL files</h2>
+<p>Next step is to read the raw data (CEL files) and to store in a variable (in this case we have called it <strong>rawData</strong>). First we have to load the package <em>oligo</em> with the function <em>library</em>. In this package are coded the functions to read the CEL files. Take attention to put the correct folder where the CEL files are saved when executing <em>list.celfiles</em> function.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(oligo)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>celFiles &lt;-<span class="st"> </span><span class="kw">list.celfiles</span>(<span class="st">&quot;./data&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(Biobase)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span>my.targets &lt;-<span class="kw">read.AnnotatedDataFrame</span>(<span class="kw">file.path</span>(<span class="st">&quot;./data&quot;</span>,<span class="st">&quot;targets.csv&quot;</span>), </a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="op">+</span><span class="st">                                      </span><span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="op">+</span><span class="st">                                      </span><span class="dt">sep=</span><span class="st">&quot;;&quot;</span>) </a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span>rawData &lt;-<span class="st"> </span><span class="kw">read.celfiles</span>(celFiles, <span class="dt">phenoData =</span> my.targets)</a></code></pre></div>
+<p>Note that we have read another time the targets file, but now using another specific function: <em>read.AnnotatedDataFrame</em>, and stored in a new variable called <em>my.targets</em>. We have done that to associate the information stored in the CEL files with the targets file in on single variable with the last code’s line. This object is called <em>ExpressionSet</em> and is designed to combine several different sources of information into a single convenient structure. We could store in this object all the information available about the experiment performed (protocol used, experiment data, microarray type,…). Moreover it allow us to change the long name of the samples, for the short and more comprehensive label previously coded in <em>ShortName</em> column of the <em>targets</em>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>my.targets<span class="op">@</span>data<span class="op">$</span>ShortName-&gt;<span class="kw">rownames</span>(<span class="kw">pData</span>(rawData))</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">colnames</span>(rawData) &lt;-<span class="kw">rownames</span>(<span class="kw">pData</span>(rawData)) </a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="er">&gt;</span><span class="st"> </span><span class="kw">head</span>(rawData)</a></code></pre></div>
+<pre><code>GeneFeatureSet (storageMode: lockedEnvironment)
+assayData: 1 features, 12 samples 
+  element names: exprs 
+protocolData
+  rowNames: WT.RT.1 WT.RT.2 ... KO.COLD.3 (12 total)
+  varLabels: exprs dates
+  varMetadata: labelDescription channel
+phenoData
+  rowNames: WT.RT.1 WT.RT.2 ... KO.COLD.3 (12 total)
+  varLabels: Group Genotype Temperature ShortName
+  varMetadata: labelDescription channel
+featureData: none
+experimentData: use &#39;experimentData(object)&#39;
+Annotation: pd.mogene.2.1.st </code></pre>
+</div>
+<div id="quality-control-of-raw-data" class="section level2">
+<h2><span class="header-section-number">4.5</span> Quality control of raw data</h2>
+<p>Once the raw data is loaded it is the moment to check if the data have enough quality for normalization. This step is very important since bad quality data could introduce a lot of noise in the analysis, that normalization process could not solve. ArrayQualityMetrics package performs different quality approaches, like boxplot of the intensity of the data and Principal Component Analysis (PCA) among others. If one array is above a certain threshold defined in the function it is marked with an asterisk as an outlier. When a certain array is marked three times it should be revised carefully, perhaps this sample will have to be rejected to improve the overall quality of the experiment.
+First step is to load the library to gain access to the function. Be careful again to specify correctly the destination folder of the results:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(arrayQualityMetrics)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">arrayQualityMetrics</span>(rawData)</a></code></pre></div>
+<p>We have to check the results of the quality analysis in a recently created QCDir.Raw folder inside the results folder previously created. Inside this folder we have to look for a file called <em>index.html</em>, which opens a web page from where we will be able to access a summary of the analysis performed. The image in figure <a href="methods.html#fig:QCRawDataRes">4.1</a> shows the header of this file which contains a table with three columns indicating some quality criteria that should be verified by “good quality” arrays. In this example three samples have been marked once. Usually if there is only one mark it means that potential problems are small so we can decide to keep all the arrays in the analyis.</p>
+<div class="figure"><span id="fig:QCRawDataRes"></span>
+<img src="figures/Figure3.png" alt="Aspect of the summary table, in the index.html file, produced by the arrayQualityMetrics package on the raw data" width="246" />
+<p class="caption">
+Figure 4.1: Aspect of the summary table, in the index.html file, produced by the arrayQualityMetrics package on the raw data
+</p>
+</div>
+<p>A more comprehensive principal component analysis can be obtained using a function specifically design for that. The code for this function is shown in the next code chunk.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(ggrepel)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>plotPCA3 &lt;-<span class="st"> </span><span class="cf">function</span> (datos, labels, factor, title, scale,colores, <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">glineas =</span> <span class="fl">0.25</span>) {</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="op">+</span><span class="st">   </span>data &lt;-<span class="st"> </span><span class="kw">prcomp</span>(<span class="kw">t</span>(datos),<span class="dt">scale=</span>scale)</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="op">+</span><span class="st">   </span><span class="co"># plot adjustments</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="op">+</span><span class="st">   </span>dataDf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(data<span class="op">$</span>x)</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="op">+</span><span class="st">   </span>Group &lt;-<span class="st"> </span>factor</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="op">+</span><span class="st">   </span>loads &lt;-<span class="st"> </span><span class="kw">round</span>(data<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(data<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">100</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="op">+</span><span class="st">   </span><span class="co"># main plot</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="op">+</span><span class="st">   </span>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dataDf,<span class="kw">aes</span>(<span class="dt">x=</span>PC1, <span class="dt">y=</span>PC2)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="op">+</span><span class="st">     </span><span class="kw">theme_classic</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="op">+</span><span class="st">     </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;gray70&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="op">+</span><span class="st">     </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;gray70&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="op">+</span><span class="st">     </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Group), <span class="dt">alpha =</span> <span class="fl">0.55</span>, <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="op">+</span><span class="st">     </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="kw">min</span>(data<span class="op">$</span>x[,<span class="dv">1</span>])<span class="op">-</span><span class="dv">5</span>,<span class="kw">max</span>(data<span class="op">$</span>x[,<span class="dv">1</span>])<span class="op">+</span><span class="dv">5</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="op">+</span><span class="st">     </span><span class="kw">scale_fill_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Group&quot;</span>)</a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="op">+</span><span class="st">   </span><span class="co"># avoiding labels superposition</span></a>
+<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="op">+</span><span class="st">   </span>p1 <span class="op">+</span><span class="st"> </span><span class="kw">geom_text_repel</span>(<span class="kw">aes</span>(<span class="dt">y =</span> PC2 <span class="op">+</span><span class="st"> </span><span class="fl">0.25</span>, <span class="dt">label =</span> labels),<span class="dt">segment.size =</span> <span class="fl">0.25</span>, <span class="dt">size =</span> size) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="op">+</span><span class="st">     </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;PC1&quot;</span>,loads[<span class="dv">1</span>],<span class="st">&quot;%&quot;</span>)),<span class="dt">y=</span><span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;PC2&quot;</span>,loads[<span class="dv">2</span>],<span class="st">&quot;%&quot;</span>))) <span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb9-20" data-line-number="20"><span class="op">+</span><span class="st">     </span><span class="kw">ggtitle</span>(<span class="kw">paste</span>(<span class="st">&quot;Principal Component Analysis for: &quot;</span>,title,<span class="dt">sep=</span><span class="st">&quot; &quot;</span>))<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-21" data-line-number="21"><span class="op">+</span><span class="st">     </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-22" data-line-number="22"><span class="op">+</span><span class="st">     </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span>colores)</a>
+<a class="sourceLine" id="cb9-23" data-line-number="23"><span class="op">+</span><span class="st">   </span>}</a></code></pre></div>
+<p>Figure <a href="methods.html#fig:PCARaw">4.2</a> shows the scatterplot of the first two principal components performed on the raw data.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">plotPCA3</span>(<span class="kw">exprs</span>(rawData), <span class="dt">labels =</span> targets<span class="op">$</span>ShortName, <span class="dt">factor =</span> targets<span class="op">$</span>Group, </a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="op">+</span><span class="st">          </span><span class="dt">title=</span><span class="st">&quot;Raw data&quot;</span>, <span class="dt">scale =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="op">+</span><span class="st">          </span><span class="dt">colores =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</a></code></pre></div>
+<div class="figure"><span id="fig:PCARaw"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/PCARaw-1.png" alt="Visualization of the two first Principal Components for raw data" width="672" />
+<p class="caption">
+Figure 4.2: Visualization of the two first Principal Components for raw data
+</p>
+</div>
+<p>Note that we have defined in the function some parameters to facilitate the visualization.</p>
+<ul>
+<li>the label of the samples, remember that it is coded in the <em>ShortName</em> column of the targets</li>
+<li>the characteristic to color the samples, coded in the <em>Group</em> column in targets</li>
+<li>the colors of each group</li>
+</ul>
+<p>First component of the PCA accounts for 55.9% of the total variability of the samples, and as we can observe in the plot, this variability is mainly contributed by the <em>temperature</em> condition since samples incubated to 4 degrees are on the right and samples incubated at room temperature are on the left.</p>
+<p>In the same way, we can easily visualize the intensity distribution of the arrays using boxplots. Figure <a href="methods.html#fig:BoxplotRaw">4.3</a> shows a multiple boxplot depicting the distribution of the intensities along all samples.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">boxplot</span>(rawData, <span class="dt">cex.axis=</span><span class="fl">0.5</span>, <span class="dt">las=</span><span class="dv">2</span>,  <span class="dt">which=</span><span class="st">&quot;all&quot;</span>, </a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="op">+</span><span class="st">          </span><span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;red&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;blue&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;green&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;yellow&quot;</span>, <span class="dv">3</span>)),</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="op">+</span><span class="st">          </span><span class="dt">main=</span><span class="st">&quot;Distribution of raw intensity values&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:BoxplotRaw"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/BoxplotRaw-1.png" alt="Boxplot for arrays intensities (Raw Data)" width="672" />
+<p class="caption">
+Figure 4.3: Boxplot for arrays intensities (Raw Data)
+</p>
+</div>
+<p>A light variation of intensity among arrays is observed, but this is the expected for raw data.</p>
+</div>
+<div id="data-normalization" class="section level2">
+<h2><span class="header-section-number">4.6</span> Data normalization</h2>
+<p>Before beginning with differential expression analysis, it is necessary to make the arrays comparable among them and try to reduce, and if it is possible to eliminate, all the variability in the samples not owing to biological reasons.Normalization process tries to assure that intensity differences present in the array, reflects the differential expression of the genes, rather than artificial biases due to technical issues. Normalization process consists of three discrete steps: background correction, normalization, and summarization. Most commonly used method for array normalization is Robust Multichip Analysis <span class="citation">Irizarry et al. (<a href="#ref-rmaIri">2003</a>)</span>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>eset_rma &lt;-<span class="st"> </span><span class="kw">rma</span>(rawData)</a></code></pre></div>
+<pre><code>Background correcting
+Normalizing
+Calculating Expression</code></pre>
+</div>
+<div id="quality-control-of-normalized-data" class="section level2">
+<h2><span class="header-section-number">4.7</span> Quality control of normalized data</h2>
+<p>After performing normalization it is interesting to perform again a quality control to check how data looks. In the same way than before (look we have changed <em>rawData</em> object to <em>eset_rma</em>).</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">arrayQualityMetrics</span>(eset_rma, <span class="dt">outdir =</span> <span class="kw">file.path</span>(<span class="st">&quot;./results&quot;</span>, <span class="st">&quot;QCDir.Norm&quot;</span>), <span class="dt">force=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Figure <a href="methods.html#fig:QCNormDataRes">4.4</a> shows the same summary as before, but performed on normalized data.</p>
+<div class="figure"><span id="fig:QCNormDataRes"></span>
+<img src="figures/Figure6.png" alt="Aspect of the summary table, in the index.html file, produced by the arrayQualityMetrics package on normalized data" width="246" />
+<p class="caption">
+Figure 4.4: Aspect of the summary table, in the index.html file, produced by the arrayQualityMetrics package on normalized data
+</p>
+</div>
+<p>Figure <a href="methods.html#fig:PCANorm">4.5</a> shows the scatterplot of the first two principal components performed on normalized data.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">plotPCA3</span>(<span class="kw">exprs</span>(eset_rma), <span class="dt">labels =</span> targets<span class="op">$</span>ShortName, <span class="dt">factor =</span> targets<span class="op">$</span>Group, </a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="op">+</span><span class="st">          </span><span class="dt">title=</span><span class="st">&quot;Normalized data&quot;</span>, <span class="dt">scale =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="op">+</span><span class="st">          </span><span class="dt">colores =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</a></code></pre></div>
+<div class="figure"><span id="fig:PCANorm"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/PCANorm-1.png" alt="Visualization of first two principal components for normalized data" width="672" />
+<p class="caption">
+Figure 4.5: Visualization of first two principal components for normalized data
+</p>
+</div>
+<p>Now first component accounts for 33% of the total variability. Notice that the percentage of explained variability has decreased with respect to PCA performed on raw data. Similarly as with the PCA with raw data, it separates samples from <em>COLD</em> level of <em>temperature</em> condition on the right, and samples from <em>RT</em> level on the left. It is important to note that there are one sample from group <em>KO.RT</em> that groups near <strong>WT.RT</strong> and viceversa. It could be an issue of mislabeling of samples that should be checked with the laboratory that has processed the samples.</p>
+<p>Figure <a href="methods.html#fig:BoxplotNorm">4.6</a> shows a multiple boxplot depicting the distribution of the normalized intensities along all samples. Notice that all boxplots have the same aspect. This suggests that the normalization has worked fine. However it is important to be aware that RMA includes a step (“quantile normalization”) where the empirical distribution of all the samples is set to the same values. As a consequence <strong>it is expected that the boxplots are identical or at least very similar</strong>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">boxplot</span>(eset_rma, <span class="dt">cex.axis=</span><span class="fl">0.5</span>, <span class="dt">las=</span><span class="dv">2</span>,  <span class="dt">which=</span><span class="st">&quot;all&quot;</span>, </a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="op">+</span><span class="st">          </span><span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;red&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;blue&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;green&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;yellow&quot;</span>, <span class="dv">3</span>)),</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="op">+</span><span class="st">          </span><span class="dt">main=</span><span class="st">&quot;Boxplot for arrays intensity: Normalized Data&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:BoxplotNorm"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/BoxplotNorm-1.png" alt="Distribution of  intensities for normalized data" width="672" />
+<p class="caption">
+Figure 4.6: Distribution of intensities for normalized data
+</p>
+</div>
+</div>
+<div id="batch-detection" class="section level2">
+<h2><span class="header-section-number">4.8</span> Batch detection</h2>
+<p>Gene expression microarray results can be affected by minuscule differences in any number of non-biological variables like reagents from different lots, different technicians and the more usual issue the different processing date of samples from the same experiment. The cumulative error introduced by these time and place-dependent experimental variations is referred to as “batch effects”. Different approaches have been developed for identifying and removing batch effects from microarray data like surrogate variable analysis, Combat and Principal variation component analysis (PVCA).</p>
+<p>Here we will use the last one, Principal Variation Component Analysis, which estimates source and proportion of variation in two steps, principal component analysis, and variance component analysis. All samples were processed the same day (this can be seen using function <code>get.celfile.dates()</code> from package <code>affyio</code>) so a typical batch factor such as “Processing date” <strong>needs not</strong> be considered.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="co">#load the library</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="er">&gt;</span><span class="st"> </span><span class="kw">library</span>(pvca)</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">pData</span>(eset_rma) &lt;-<span class="st"> </span>targets</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span><span class="co">#select the threshold</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="er">&gt;</span><span class="st"> </span>pct_threshold &lt;-<span class="st"> </span><span class="fl">0.6</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="op">&gt;</span><span class="st"> </span><span class="co">#select the factors to analyze</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="er">&gt;</span><span class="st"> </span>batch.factors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Genotype&quot;</span>, <span class="st">&quot;Temperature&quot;</span>)</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="op">&gt;</span><span class="st"> </span><span class="co">#run the analysis</span></a>
+<a class="sourceLine" id="cb17-9" data-line-number="9"><span class="er">&gt;</span><span class="st"> </span>pvcaObj &lt;-<span class="st"> </span><span class="kw">pvcaBatchAssess</span> (eset_rma, batch.factors, pct_threshold)</a></code></pre></div>
+<p>Figure <a href="methods.html#fig:plotPVCA">4.7</a> shows a bar diagram with one bar per each source of variation included in the analysis. Their relative size indicates the percentage of variability attributable to each source. The plot shows that the main source of variation in the samples is the <em>Temperature</em> condition. This was also observed on the PCA plots on raw and normalized data in figures <a href="methods.html#fig:PCARaw">4.2</a> and <a href="methods.html#fig:PCANorm">4.5</a>.</p>
+<p>Notice that temperature <strong>is not</strong> a batch factor. It is an experimental factor that was included in the experimental desiogn.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="co">#plot the results</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="er">&gt;</span><span class="st"> </span>bp &lt;-<span class="st"> </span><span class="kw">barplot</span>(pvcaObj<span class="op">$</span>dat, <span class="dt">xlab =</span> <span class="st">&quot;Effects&quot;</span>,</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="op">+</span><span class="st">   </span><span class="dt">ylab =</span> <span class="st">&quot;Weighted average proportion variance&quot;</span>,</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="op">+</span><span class="st">   </span><span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">1.1</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;mediumorchid&quot;</span>), <span class="dt">las=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="op">+</span><span class="st">   </span><span class="dt">main=</span><span class="st">&quot;PVCA estimation&quot;</span>)</a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="op">&gt;</span><span class="st"> </span><span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> bp, <span class="dt">labels =</span> pvcaObj<span class="op">$</span>label, <span class="dt">cex.axis =</span> <span class="fl">0.75</span>, <span class="dt">las=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span>values =<span class="st"> </span>pvcaObj<span class="op">$</span>dat</a>
+<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="op">&gt;</span><span class="st"> </span>new_values =<span class="st"> </span><span class="kw">round</span>(values , <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb18-9" data-line-number="9"><span class="op">&gt;</span><span class="st"> </span><span class="kw">text</span>(bp,pvcaObj<span class="op">$</span>dat,<span class="dt">labels =</span> new_values, <span class="dt">pos=</span><span class="dv">3</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:plotPVCA"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/plotPVCA-1.png" alt="Relative importance of the different factors -genotype, temperature and interaction- affecting gene expression" width="672" />
+<p class="caption">
+Figure 4.7: Relative importance of the different factors -genotype, temperature and interaction- affecting gene expression
+</p>
+</div>
+</div>
+<div id="detecting-most-variable-genes" class="section level2">
+<h2><span class="header-section-number">4.9</span> Detecting most variable genes</h2>
+<p>Selection of differentially expressed genes is affected by the number of genes on which we make it. The higher the number, the greater the necessary adjustment of p-values (as will be seen below), which will lead us to end up miscarrying more genes.</p>
+<p>If a gene is differentially expressed, it is expected that there is a certain difference between the groups, and therefore the overall variance of the gene will be greater than that of those that do not have differential expression.
+Plotting the overall variability of all genes is useful to decide which percentage of genes shows a variability that can be attributed to other causes than random variation. Figure <a href="methods.html#fig:SDplot">4.8</a> depicts the standard deviations of all genes sorted from smallest to biggest values. The plot shows that the most variable genes are those with a standard deviation above 90-95% of all standard deviations.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>sds &lt;-<span class="st"> </span><span class="kw">apply</span> (<span class="kw">exprs</span>(eset_rma), <span class="dv">1</span>, sd)</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>sdsO&lt;-<span class="st"> </span><span class="kw">sort</span>(sds)</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sdsO), sdsO, <span class="dt">main=</span><span class="st">&quot;Distribution of variability for all genes&quot;</span>,</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="op">+</span><span class="st">      </span><span class="dt">sub=</span><span class="st">&quot;Vertical lines represent 90% and 95% percentiles&quot;</span>,</a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="op">+</span><span class="st">      </span><span class="dt">xlab=</span><span class="st">&quot;Gene index (from least to most variable)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Standard deviation&quot;</span>)</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="op">&gt;</span><span class="st"> </span><span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">length</span>(sds)<span class="op">*</span><span class="kw">c</span>(<span class="fl">0.9</span>,<span class="fl">0.95</span>))</a></code></pre></div>
+<div class="figure"><span id="fig:SDplot"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/SDplot-1.png" alt="Values of standard deviations allong all samples for all genes ordered from smallest to biggest" width="672" />
+<p class="caption">
+Figure 4.8: Values of standard deviations allong all samples for all genes ordered from smallest to biggest
+</p>
+</div>
+</div>
+<div id="filtering-least-variable-genes" class="section level2">
+<h2><span class="header-section-number">4.10</span> Filtering least variable genes</h2>
+<p>Filtering out those genes whose variability can be attributed to random variation, that is the genes that are, reasonably, not expected to be differential expressed, has proven to be useful to reduce the number of tests to be performed with the corresponding increase in power <span class="citation">Hackstadt and Hess (<a href="#ref-Hackstadt2009">2009</a>)</span>.</p>
+<p>Function <code>nsFilter</code> from the bioconductor package <code>genefilter</code> can be used to remove genes based on a variability threshold. If an annotation package -associating probesets identifiers and gene identifiers from different databases- is available it can also be used to remove probesets which do not have a gene identifier associated.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(genefilter)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(mogene21sttranscriptcluster.db)</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">annotation</span>(eset_rma) &lt;-<span class="st"> &quot;mogene21sttranscriptcluster.db&quot;</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span>filtered &lt;-<span class="st"> </span><span class="kw">nsFilter</span>(eset_rma, </a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="op">+</span><span class="st">                      </span><span class="dt">require.entrez =</span> <span class="ot">TRUE</span>, <span class="dt">remove.dupEntrez =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="op">+</span><span class="st">                      </span><span class="dt">var.filter=</span><span class="ot">TRUE</span>, <span class="dt">var.func=</span>IQR, <span class="dt">var.cutoff=</span><span class="fl">0.75</span>, </a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="op">+</span><span class="st">                      </span><span class="dt">filterByQuantile=</span><span class="ot">TRUE</span>, <span class="dt">feature.exclude =</span> <span class="st">&quot;^AFFX&quot;</span>)</a></code></pre></div>
+<p>Function <code>nsFilter</code> returns the filtered values and a report of the filtering results.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">print</span>(filtered<span class="op">$</span>filter.log)</a></code></pre></div>
+<pre><code>$numDupsRemoved
+[1] 671
+
+$numLowVar
+[1] 17981
+
+$numRemoved.ENTREZID
+[1] 16699</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>eset_filtered &lt;-filtered<span class="op">$</span>eset</a></code></pre></div>
+<p>After filtering there are 5994 genes left. Note that we have stored the genes left in the variable <em>eset_filtered</em></p>
+</div>
+<div id="saving-normalized-and-filtered-data" class="section level2">
+<h2><span class="header-section-number">4.11</span> Saving normalized and filtered data</h2>
+<p>Normalized filtered data are the starting point for further analyses but we may want to go back to them, for example to review specific gene expression values. It is usual to save the binary objects but also to write expression values into text or excel files. Writing to Excel from R is not a trivial task -for strange it may seem- because different packages work differently depending of the operating system, so it is omitted from the code.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv</span>(<span class="kw">exprs</span>(eset_rma), <span class="dt">file=</span><span class="st">&quot;./results/normalized.Data.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv</span>(<span class="kw">exprs</span>(eset_filtered), <span class="dt">file=</span><span class="st">&quot;./results/normalized.Filtered.Data.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">save</span>(eset_rma, eset_filtered, <span class="dt">file=</span><span class="st">&quot;./results/normalized.Data.Rda&quot;</span>)</a></code></pre></div>
+</div>
+<div id="defining-the-experimental-setup-the-design-matrix" class="section level2">
+<h2><span class="header-section-number">4.12</span> Defining the experimental setup: The design matrix</h2>
+<p>Selection of differential expressed genes basically consists of doing some type of test, usually on a gene-wise basis, to compare gene expression between groups. This can be done using many different approaches (see <span class="citation">Chrominski and Tkacz (<a href="#ref-Chrominski2015">2015</a>)</span>). There is a general agreement that using standard statistical tests such as t-tests is not appropriate <span class="citation">Jeanmougin et al. (<a href="#ref-Jeanmougin2010">2010</a>)</span> and that better options are methods that perform some type of variance shrinking <span class="citation">Allison et al. (<a href="#ref-Allison2006">2006</a>)</span>. Techniques specifically developed for microarrays such as SAM <span class="citation">Tusher, Tibshirani, and Chu (<a href="#ref-Tusher2001">2001</a>)</span> or Linear Models for Microarrays <span class="citation">Smyth (<a href="#ref-Smyth2004">2004</a>)</span> have proved to produce much better results <span class="citation">Chrominski and Tkacz (<a href="#ref-Chrominski2015">2015</a>)</span>.</p>
+<p>In this protocol the Linear Models for Microarrays method, implemented in the limma package <span class="citation">Smyth (<a href="#ref-Smyth2005">2005</a>)</span> is used to select differential expressed genes.</p>
+<p>The first step for the analysis based on linear models is to create the <strong>design matrix</strong>. Basically it is a table that describes the allocation of each sample to a group or experimental condition. It has as many rows as samples and as many columns as groups (if only one factor is considered).
+Each row contains a one in the column of the group to which the sample belongs and a zero in the others.</p>
+<p>The design matrix can be defined manually or from a factor variable that may have been introduced in the “targets” file with this aim created specifically for it. In this study that “Group” variable is a combination of the two experimental conditions, “KO/Wild” and “RT/COLD” which are jointly represented as one factor with 4 levels.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="cf">if</span> (<span class="op">!</span><span class="kw">exists</span>(<span class="st">&quot;eset_filtered&quot;</span>)) <span class="kw">load</span> (<span class="dt">file=</span><span class="st">&quot;./results/normalized.Data.Rda&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(limma)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>designMat&lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span><span class="dv">0</span><span class="op">+</span>Group, <span class="kw">pData</span>(eset_filtered))</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">colnames</span>(designMat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;KO.COLD&quot;</span>, <span class="st">&quot;KO.RT&quot;</span>, <span class="st">&quot;WT.COLD&quot;</span>, <span class="st">&quot;WT.RT&quot;</span>)</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span><span class="kw">print</span>(designMat)</a></code></pre></div>
+<pre><code>   KO.COLD KO.RT WT.COLD WT.RT
+1        0     0       0     1
+2        0     0       0     1
+3        0     0       0     1
+4        0     1       0     0
+5        0     1       0     0
+6        0     1       0     0
+7        0     0       1     0
+8        0     0       1     0
+9        0     0       1     0
+10       1     0       0     0
+11       1     0       0     0
+12       1     0       0     0
+attr(,&quot;assign&quot;)
+[1] 1 1 1 1
+attr(,&quot;contrasts&quot;)
+attr(,&quot;contrasts&quot;)$Group
+[1] &quot;contr.treatment&quot;</code></pre>
+</div>
+<div id="defining-comparisons-with-the-contrasts-matrix" class="section level2">
+<h2><span class="header-section-number">4.13</span> Defining comparisons with the Contrasts Matrix</h2>
+<p>The contrasts matrix is used to describe the comparisons between groups
+It consists of as many columns as comparisons and as many rows as
+groups (that is, as columns of the design matrix).
+A comparison between groups - called “contrast” - is represented by a “1” and a “-1” in the rows of groups to compare and zeros in the rest.
+If several groups intervened in the comparison would have as many coefficients as groups with the only restriction that its sum would be zero.</p>
+<p>In this example we want to check the effect of knocking out a gene (“KO vs WT”) separately for cold and RT temperature. Also we want to test if there is interaction between knocking out the gene and temperature. This can be done by doing three comparisons described below:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>cont.matrix &lt;-<span class="st"> </span><span class="kw">makeContrasts</span> (<span class="dt">KOvsWT.COLD =</span> KO.COLD<span class="op">-</span>WT.COLD,</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="op">+</span><span class="st">                               </span><span class="dt">KOvsWT.RT =</span> KO.RT<span class="op">-</span>WT.RT,</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="op">+</span><span class="st">                               </span><span class="dt">INT =</span> (KO.COLD<span class="op">-</span>WT.COLD) <span class="op">-</span><span class="st"> </span>(KO.RT<span class="op">-</span>WT.RT),</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="op">+</span><span class="st">                               </span><span class="dt">levels=</span>designMat)</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span><span class="kw">print</span>(cont.matrix)</a></code></pre></div>
+<pre><code>         Contrasts
+Levels    KOvsWT.COLD KOvsWT.RT INT
+  KO.COLD           1         0   1
+  KO.RT             0         1  -1
+  WT.COLD          -1         0  -1
+  WT.RT             0        -1   1</code></pre>
+<p>The contrast matrix is defined to perform three comparisons: Effect of KO in Cold temperature, Effect of KO in RT temperature and interaction between KO and temperature.</p>
+</div>
+<div id="model-estimation-and-gene-selection" class="section level2">
+<h2><span class="header-section-number">4.14</span> Model estimation and gene selection</h2>
+<p>Once the design matrix and the contrasts have been defined, we can proceed to estimate the model, estimate the contrasts and perform the significance tests that will lead to the decision, for each gene and each comparison, if they can be considered differential expressed.</p>
+<p>The method implemented in the <code>limma</code> package extends the traditional analysis using Empirical Bayes models to combine an estimate of variability based on the entire matrix with individual estimates based on each individual values providing improved error estimates <span class="citation">Smyth (<a href="#ref-Smyth2004">2004</a>)</span>.</p>
+<p>The analysis provides the usual test statistics such as Fold-change
+t-moderated or adjusted p-values that are used to order the genes from more unless differential expressed.</p>
+<p>In order to control the percentage of false positives that may result from high number of contrasts made simultaneously the p-values are adjusted so that we have control over the false positive rate using the
+Benjamini and Hochberg method <span class="citation">Benjamini and Hochberg (<a href="#ref-Benjamini1995">1995</a>)</span>.</p>
+<p>All relevant information for further exploration of the results is stored in an R object of class <code>MArrayLM</code> defined in the <code>limma</code> package. Here it is named as <code>fit.main</code>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(limma)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>fit&lt;-<span class="kw">lmFit</span>(eset_filtered, designMat)</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>fit.main&lt;-<span class="kw">contrasts.fit</span>(fit, cont.matrix)</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span>fit.main&lt;-<span class="kw">eBayes</span>(fit.main)</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span><span class="kw">class</span>(fit.main)</a></code></pre></div>
+<pre><code>[1] &quot;MArrayLM&quot;
+attr(,&quot;package&quot;)
+[1] &quot;limma&quot;</code></pre>
+</div>
+<div id="obtaining-lists-of-differentially-expressed-genes" class="section level2">
+<h2><span class="header-section-number">4.15</span> Obtaining lists of differentially expressed genes</h2>
+<p>The <code>limma</code> package implements function <code>topTable</code> which contains, for a given contrast a list of genes ordered from smallest to biggest p–value which can be considered to be most to least differential expressed. For each gene the following statistics are provided:</p>
+<ul>
+<li><code>logFC</code>: Mean difference between groups.<br />
+</li>
+<li><code>AveExpr</code>: Average expression of all genes in the comparison.</li>
+<li><code>t</code> : Moderated t-statistic (t-test-like statistic for the comparison).</li>
+<li><code>P.Value</code>: Test p–value.<br />
+</li>
+<li><code>adj.P.Val</code>: Adjusted p–value following <span class="citation">Benjamini and Hochberg (<a href="#ref-Benjamini1995">1995</a>)</span><br />
+</li>
+<li><code>B</code>: B-statistic: Posterior log odds of the gene of being vs non being differential expressed.</li>
+</ul>
+<p>We can have a look at the first lines of each <code>topTable</code>.</p>
+<p>For comparison 1 (KOvsWT.COLD): Genes that change their expression between KO and WT in cold temperature:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>topTab_KOvsWT.COLD &lt;-<span class="st"> </span><span class="kw">topTable</span> (fit.main, <span class="dt">number=</span><span class="kw">nrow</span>(fit.main), <span class="dt">coef=</span><span class="st">&quot;KOvsWT.COLD&quot;</span>, <span class="dt">adjust=</span><span class="st">&quot;fdr&quot;</span>) </a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(topTab_KOvsWT.COLD)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">logFC</th>
+<th align="right">AveExpr</th>
+<th align="right">t</th>
+<th align="right">P.Value</th>
+<th align="right">adj.P.Val</th>
+<th align="right">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>17497829</td>
+<td align="right">2.474954</td>
+<td align="right">6.706683</td>
+<td align="right">15.73570</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000301</td>
+<td align="right">10.278310</td>
+</tr>
+<tr class="even">
+<td>17407049</td>
+<td align="right">3.676524</td>
+<td align="right">4.697071</td>
+<td align="right">14.66069</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000323</td>
+<td align="right">9.724106</td>
+</tr>
+<tr class="odd">
+<td>17529307</td>
+<td align="right">-3.628616</td>
+<td align="right">3.493648</td>
+<td align="right">-10.96870</td>
+<td align="right">2e-07</td>
+<td align="right">0.0003523</td>
+<td align="right">7.268699</td>
+</tr>
+<tr class="even">
+<td>17373930</td>
+<td align="right">2.071352</td>
+<td align="right">5.412865</td>
+<td align="right">10.79258</td>
+<td align="right">3e-07</td>
+<td align="right">0.0003523</td>
+<td align="right">7.125248</td>
+</tr>
+<tr class="odd">
+<td>17251565</td>
+<td align="right">1.991109</td>
+<td align="right">2.955199</td>
+<td align="right">10.72249</td>
+<td align="right">3e-07</td>
+<td align="right">0.0003523</td>
+<td align="right">7.067379</td>
+</tr>
+<tr class="even">
+<td>17291821</td>
+<td align="right">-2.434786</td>
+<td align="right">5.348719</td>
+<td align="right">-10.24570</td>
+<td align="right">5e-07</td>
+<td align="right">0.0004035</td>
+<td align="right">6.661420</td>
+</tr>
+</tbody>
+</table>
+<p>For comparison 2 (KOvsWT.RT): Genes that change their expression between KO and WT in room temperature:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>topTab_KOvsWT.RT &lt;-<span class="st"> </span><span class="kw">topTable</span> (fit.main, <span class="dt">number=</span><span class="kw">nrow</span>(fit.main), <span class="dt">coef=</span><span class="st">&quot;KOvsWT.RT&quot;</span>, <span class="dt">adjust=</span><span class="st">&quot;fdr&quot;</span>) </a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(topTab_KOvsWT.RT)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">logFC</th>
+<th align="right">AveExpr</th>
+<th align="right">t</th>
+<th align="right">P.Value</th>
+<th align="right">adj.P.Val</th>
+<th align="right">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>17407049</td>
+<td align="right">3.675590</td>
+<td align="right">4.697071</td>
+<td align="right">14.65697</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000242</td>
+<td align="right">9.814462</td>
+</tr>
+<tr class="even">
+<td>17282970</td>
+<td align="right">-3.565316</td>
+<td align="right">9.093793</td>
+<td align="right">-14.60544</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000242</td>
+<td align="right">9.785700</td>
+</tr>
+<tr class="odd">
+<td>17497829</td>
+<td align="right">2.280728</td>
+<td align="right">6.706683</td>
+<td align="right">14.50082</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000242</td>
+<td align="right">9.726841</td>
+</tr>
+<tr class="even">
+<td>17425609</td>
+<td align="right">2.207391</td>
+<td align="right">2.464984</td>
+<td align="right">11.92132</td>
+<td align="right">1e-07</td>
+<td align="right">0.0001202</td>
+<td align="right">8.056504</td>
+</tr>
+<tr class="odd">
+<td>17472497</td>
+<td align="right">-3.366076</td>
+<td align="right">7.132534</td>
+<td align="right">-11.88752</td>
+<td align="right">1e-07</td>
+<td align="right">0.0001202</td>
+<td align="right">8.031485</td>
+</tr>
+<tr class="even">
+<td>17399411</td>
+<td align="right">-1.816331</td>
+<td align="right">4.457054</td>
+<td align="right">-11.15264</td>
+<td align="right">2e-07</td>
+<td align="right">0.0001886</td>
+<td align="right">7.464482</td>
+</tr>
+</tbody>
+</table>
+<p>For comparison 3 (INT): Genes that behave differently between comparison 1 and 2:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>topTab_INT  &lt;-<span class="st"> </span><span class="kw">topTable</span> (fit.main, <span class="dt">number=</span><span class="kw">nrow</span>(fit.main), <span class="dt">coef=</span><span class="st">&quot;INT&quot;</span>, <span class="dt">adjust=</span><span class="st">&quot;fdr&quot;</span>) </a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(topTab_INT)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">logFC</th>
+<th align="right">AveExpr</th>
+<th align="right">t</th>
+<th align="right">P.Value</th>
+<th align="right">adj.P.Val</th>
+<th align="right">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>17282970</td>
+<td align="right">3.369838</td>
+<td align="right">9.093793</td>
+<td align="right">9.761369</td>
+<td align="right">8.00e-07</td>
+<td align="right">0.0046174</td>
+<td align="right">5.718379</td>
+</tr>
+<tr class="even">
+<td>17494820</td>
+<td align="right">2.023908</td>
+<td align="right">1.704030</td>
+<td align="right">8.449033</td>
+<td align="right">3.30e-06</td>
+<td align="right">0.0098079</td>
+<td align="right">4.583532</td>
+</tr>
+<tr class="odd">
+<td>17251565</td>
+<td align="right">2.127194</td>
+<td align="right">2.955199</td>
+<td align="right">8.100148</td>
+<td align="right">4.90e-06</td>
+<td align="right">0.0098846</td>
+<td align="right">4.246054</td>
+</tr>
+<tr class="even">
+<td>17274184</td>
+<td align="right">-1.800778</td>
+<td align="right">8.001305</td>
+<td align="right">-7.331232</td>
+<td align="right">1.29e-05</td>
+<td align="right">0.0180141</td>
+<td align="right">3.443058</td>
+</tr>
+<tr class="odd">
+<td>17543045</td>
+<td align="right">2.012296</td>
+<td align="right">9.748289</td>
+<td align="right">7.213657</td>
+<td align="right">1.50e-05</td>
+<td align="right">0.0180141</td>
+<td align="right">3.312709</td>
+</tr>
+<tr class="even">
+<td>17432247</td>
+<td align="right">2.798819</td>
+<td align="right">4.218885</td>
+<td align="right">7.055025</td>
+<td align="right">1.85e-05</td>
+<td align="right">0.0184941</td>
+<td align="right">3.133530</td>
+</tr>
+</tbody>
+</table>
+<p>First column of each topTable contains the manufacturer’s (Affymetrix) ID for each probeset. Next step is to guess which gene correspond to each Affymetrix ID. This process is called <strong>annotation</strong>.</p>
+</div>
+<div id="gene-annotation" class="section level2">
+<h2><span class="header-section-number">4.16</span> Gene Annotation</h2>
+<p>Once we have the top table it is useful to provide additional information on the features that have been selected. This process is called “annotation” and essentially what it does is to look for information to associate identifiers that appear in the top table, usually corresponding to probesets or transcripts depending of the array type, with more familiar names such as the Gene Symbol, the Entrez Gene identifier or the Gene description.</p>
+<p>For simplicity, because there are three toptables, a function annotating one topTable with a given package is prepared and used.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>annotatedTopTable &lt;-<span class="st"> </span><span class="cf">function</span>(topTab, anotPackage)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="op">+</span><span class="st"> </span>{</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="op">+</span><span class="st">   </span>topTab &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">PROBEID=</span><span class="kw">rownames</span>(topTab), topTab)</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="op">+</span><span class="st">   </span>myProbes &lt;-<span class="st"> </span><span class="kw">rownames</span>(topTab)</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="op">+</span><span class="st">   </span>thePackage &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> anotPackage))</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="op">+</span><span class="st">   </span>geneAnots &lt;-<span class="st"> </span><span class="kw">select</span>(thePackage, myProbes, <span class="kw">c</span>(<span class="st">&quot;SYMBOL&quot;</span>, <span class="st">&quot;ENTREZID&quot;</span>, <span class="st">&quot;GENENAME&quot;</span>))</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="op">+</span><span class="st">   </span>annotatedTopTab&lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x=</span>geneAnots, <span class="dt">y=</span>topTab, <span class="dt">by.x=</span><span class="st">&quot;PROBEID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;PROBEID&quot;</span>)</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="op">+</span><span class="st"> </span><span class="kw">return</span>(annotatedTopTab)</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="op">+</span><span class="st"> </span>}</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>topAnnotated_KOvsWT.COLD &lt;-<span class="st"> </span><span class="kw">annotatedTopTable</span>(topTab_KOvsWT.COLD,</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="op">+</span><span class="st"> </span><span class="dt">anotPackage=</span><span class="st">&quot;mogene21sttranscriptcluster.db&quot;</span>)</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>topAnnotated_KOvsWT.RT &lt;-<span class="st"> </span><span class="kw">annotatedTopTable</span>(topTab_KOvsWT.RT,</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="op">+</span><span class="st"> </span><span class="dt">anotPackage=</span><span class="st">&quot;mogene21sttranscriptcluster.db&quot;</span>)</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span>topAnnotated_INT &lt;-<span class="st"> </span><span class="kw">annotatedTopTable</span>(topTab_INT,</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="op">+</span><span class="st"> </span><span class="dt">anotPackage=</span><span class="st">&quot;mogene21sttranscriptcluster.db&quot;</span>)</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv</span>(topAnnotated_KOvsWT.COLD, <span class="dt">file=</span><span class="st">&quot;./results/topAnnotated_KOvsWT_COLD.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8"><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv</span>(topAnnotated_KOvsWT.RT, <span class="dt">file=</span><span class="st">&quot;./results/topAnnotated_KOvsWT_RT.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9"><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv</span>(topAnnotated_INT, <span class="dt">file=</span><span class="st">&quot;./results/topAnnotated_INT.csv&quot;</span>)</a></code></pre></div>
+<p>Annotation makes the tables more comprehensible. Table <a href="#tab:annotatedTop"><strong>??</strong></a> shows the annotations added to results “topTable” for the comparison “KOvsWT.COLD” (only the first four columns are shown).</p>
+<pre><code>   PROBEID        SYMBOL ENTREZID
+1 17210887       Atp6v1h   108664
+2 17210984        Pcmtd1   319263
+3 17211000          Rrs1    59014
+4 17211131         Prex2   109294
+5 17211174 A830018L16Rik   320492
+                                                                      GENENAME
+1                              ATPase, H+ transporting, lysosomal V1 subunit H
+2 protein-L-isoaspartate (D-aspartate) O-methyltransferase domain containing 1
+3                                              ribosome biogenesis regulator 1
+4     phosphatidylinositol-3,4,5-trisphosphate-dependent Rac exchange factor 2
+5                                                   RIKEN cDNA A830018L16 gene</code></pre>
+</div>
+<div id="visualizing-differential-expression" class="section level2">
+<h2><span class="header-section-number">4.17</span> Visualizing differential expression</h2>
+<p>A visualization of the overall differential expression can be obtained using volcano-plots. These plots show if there are many or few genes with a large fold-change and significantly expressed or if this number is low. These graphs represent in the X-axis the changes of expression in logarithmic scale (“biological effect”) and in the Y-axis the “minus logarithm” of the p-value or alternatively the <code>B</code> statistic (“Statistical effect”). Figure <a href="methods.html#fig:volcanoPlot">4.9</a> shows a volcano plot for the comparison between KO and WT in COLD temperature. The names of the top 4 genes (i.e. the first four genes in the topTable) are shown in the plot.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(mogene21sttranscriptcluster.db)</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>geneSymbols &lt;-<span class="st"> </span><span class="kw">select</span>(mogene21sttranscriptcluster.db, <span class="kw">rownames</span>(fit.main), <span class="kw">c</span>(<span class="st">&quot;SYMBOL&quot;</span>))</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>SYMBOLS&lt;-<span class="st"> </span>geneSymbols<span class="op">$</span>SYMBOL</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span><span class="kw">volcanoplot</span>(fit.main, <span class="dt">coef=</span><span class="dv">1</span>, <span class="dt">highlight=</span><span class="dv">4</span>, <span class="dt">names=</span>SYMBOLS, </a>
+<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="op">+</span><span class="st">             </span><span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;Differentially expressed genes&quot;</span>, <span class="kw">colnames</span>(cont.matrix)[<span class="dv">1</span>], <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6"><span class="op">&gt;</span><span class="st">   </span><span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))</a></code></pre></div>
+<div class="figure"><span id="fig:volcanoPlot"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/volcanoPlot-1.png" alt="Volcano plot for the comparison between KO and WT in COLD temperature. The names of the top 4 genes (i.e. the first four genes in the topTable) are shown in the plot" width="672" />
+<p class="caption">
+Figure 4.9: Volcano plot for the comparison between KO and WT in COLD temperature. The names of the top 4 genes (i.e. the first four genes in the topTable) are shown in the plot
+</p>
+</div>
+</div>
+<div id="multiple-comparisons" class="section level2">
+<h2><span class="header-section-number">4.18</span> Multiple Comparisons</h2>
+<p>When one selects genes in several comparisons it is usually interesting to know which genes have been selected in each comparison. Sometimes biologically relevant genes will be those that are selected in one of them but not in others. In other occasions he interest will lie in genes that are selected in all comparisons.</p>
+<p>Functions <code>decideTests</code> and <code>VennDiagram</code> from package limma can be used to annotate and count the genes selected in every comparison.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(limma)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>res&lt;-<span class="kw">decideTests</span>(fit.main, <span class="dt">method=</span><span class="st">&quot;separate&quot;</span>, <span class="dt">adjust.method=</span><span class="st">&quot;fdr&quot;</span>, <span class="dt">p.value=</span><span class="fl">0.1</span>, <span class="dt">lfc=</span><span class="dv">1</span>)</a></code></pre></div>
+<p>This object has as many columns as comparisons and as many rows as genes. Per each gene and comparison a “+1” denotes significantly up-regulated (t-test values <span class="math inline">\(&gt;0\)</span>, FDR &lt; selected cutoff), a “-1” significantly down-regulated (t-test values <span class="math inline">\(&lt;0\)</span>, FDR &lt; selected cutoff) and a “0” non significant difference (FDR &gt; selected cutoff).</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>sum.res.rows&lt;-<span class="kw">apply</span>(<span class="kw">abs</span>(res),<span class="dv">1</span>,sum)</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>res.selected&lt;-res[sum.res.rows<span class="op">!=</span><span class="dv">0</span>,] </a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw">print</span>(<span class="kw">summary</span>(res))</a></code></pre></div>
+<pre><code>       KOvsWT.COLD KOvsWT.RT  INT
+Down            99        72   24
+NotSig        5826      5842 5949
+Up              69        80   21</code></pre>
+<p>This can be visualized in a Venn Diagram. Figure <a href="methods.html#fig:vennDiagram">4.10</a> shows a Venn diagram depicting the number of genes that have been called differentially expressed in each comparison with a given cutoff (here the cutoff is defined by “FDR &lt; 0.1” and “logFC &gt; 1” The figure shows how many of these genes are shared by one or more selections.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">vennDiagram</span> (res.selected[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dt">cex=</span><span class="fl">0.9</span>)</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">title</span>(<span class="st">&quot;Genes in common between the three comparisons</span><span class="ch">\n</span><span class="st"> Genes selected with FDR &lt; 0.1 and logFC &gt; 1&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:vennDiagram"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/vennDiagram-1.png" alt="Venn diagram showing the genes in common between the three comparisons performed" width="672" />
+<p class="caption">
+Figure 4.10: Venn diagram showing the genes in common between the three comparisons performed
+</p>
+</div>
+</div>
+<div id="heatmaps" class="section level2">
+<h2><span class="header-section-number">4.19</span> Heatmaps</h2>
+<p>Genes that have been selected as differential expressed may be visualized using a heatmap. These plots use color palettes to highlight distinct values –here positive (up-regulation) or negative (down-regulation) significantly differential expressions.</p>
+<p><em>Heatmaps</em> can be used to visualize the expression values of differential expressed genes with no specific order, but it is usually preferred to plot them doing a hierarchical clustering on genes (rows) or columns(samples) in order to find groups of genes with common patterns of variation which can eventually be associated to the different groups being compared.</p>
+<p>There may be discussion on which genes to select for doing a heatmap. A common option is to select the gens that have been selected in the previous steps, that is the genes that have been called differential expressed in at least one comparison.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>probesInHeatmap &lt;-<span class="st"> </span><span class="kw">rownames</span>(res.selected)</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>HMdata &lt;-<span class="st"> </span><span class="kw">exprs</span>(eset_filtered)[<span class="kw">rownames</span>(<span class="kw">exprs</span>(eset_filtered)) <span class="op">%in%</span><span class="st"> </span>probesInHeatmap,]</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="er">&gt;</span><span class="st"> </span>geneSymbols &lt;-<span class="st"> </span><span class="kw">select</span>(mogene21sttranscriptcluster.db, <span class="kw">rownames</span>(HMdata), <span class="kw">c</span>(<span class="st">&quot;SYMBOL&quot;</span>))</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span>SYMBOLS&lt;-<span class="st"> </span>geneSymbols<span class="op">$</span>SYMBOL</a>
+<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="op">&gt;</span><span class="st"> </span><span class="kw">rownames</span>(HMdata) &lt;-<span class="st"> </span>SYMBOLS</a>
+<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv</span>(HMdata, <span class="dt">file =</span> <span class="kw">file.path</span>(<span class="st">&quot;./results/data4Heatmap.csv&quot;</span>))</a></code></pre></div>
+<p>With the selected data a heatmap can be generated with or without clustering genes and/or samples.</p>
+<p>Figure <a href="methods.html#fig:heatmapNoclustering">4.11</a> shows a heatmap produced for all the genes selected with the same criteria described above (FDR &lt; 0.1 and logFC &gt; 1) where no clustering of genes and samples is performed.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>my_palette &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dt">n =</span> <span class="dv">299</span>)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(gplots)</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="er">&gt;</span><span class="st"> </span><span class="kw">heatmap.2</span>(HMdata,</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="op">+</span><span class="st">           </span><span class="dt">Rowv =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="op">+</span><span class="st">           </span><span class="dt">Colv =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="op">+</span><span class="st">           </span><span class="dt">main =</span> <span class="st">&quot;Differentially expressed genes </span><span class="ch">\n</span><span class="st"> FDR &lt; 0,1, logFC &gt;=1&quot;</span>,</a>
+<a class="sourceLine" id="cb44-8" data-line-number="8"><span class="op">+</span><span class="st">           </span><span class="dt">scale =</span> <span class="st">&quot;row&quot;</span>,</a>
+<a class="sourceLine" id="cb44-9" data-line-number="9"><span class="op">+</span><span class="st">           </span><span class="dt">col =</span> my_palette,</a>
+<a class="sourceLine" id="cb44-10" data-line-number="10"><span class="op">+</span><span class="st">           </span><span class="dt">sepcolor =</span> <span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb44-11" data-line-number="11"><span class="op">+</span><span class="st">           </span><span class="dt">sepwidth =</span> <span class="kw">c</span>(<span class="fl">0.05</span>,<span class="fl">0.05</span>),</a>
+<a class="sourceLine" id="cb44-12" data-line-number="12"><span class="op">+</span><span class="st">           </span><span class="dt">cexRow =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb44-13" data-line-number="13"><span class="op">+</span><span class="st">           </span><span class="dt">cexCol =</span> <span class="fl">0.9</span>,</a>
+<a class="sourceLine" id="cb44-14" data-line-number="14"><span class="op">+</span><span class="st">           </span><span class="dt">key =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb44-15" data-line-number="15"><span class="op">+</span><span class="st">           </span><span class="dt">keysize =</span> <span class="fl">1.5</span>,</a>
+<a class="sourceLine" id="cb44-16" data-line-number="16"><span class="op">+</span><span class="st">           </span><span class="dt">density.info =</span> <span class="st">&quot;histogram&quot;</span>,</a>
+<a class="sourceLine" id="cb44-17" data-line-number="17"><span class="op">+</span><span class="st">           </span><span class="dt">ColSideColors =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;red&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;blue&quot;</span>,<span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;green&quot;</span>,<span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;yellow&quot;</span>,<span class="dv">3</span>)),</a>
+<a class="sourceLine" id="cb44-18" data-line-number="18"><span class="op">+</span><span class="st">           </span><span class="dt">tracecol =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb44-19" data-line-number="19"><span class="op">+</span><span class="st">           </span><span class="dt">dendrogram =</span> <span class="st">&quot;none&quot;</span>,</a>
+<a class="sourceLine" id="cb44-20" data-line-number="20"><span class="op">+</span><span class="st">           </span><span class="dt">srtCol =</span> <span class="dv">30</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:heatmapNoclustering"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/heatmapNoclustering-1.png" alt="Heatmap for expression data without any grouping" width="672" />
+<p class="caption">
+Figure 4.11: Heatmap for expression data without any grouping
+</p>
+</div>
+<p>Figure <a href="methods.html#fig:heatmapClustering">4.12</a> shows a heatmap produced for all the genes selected with the same criteria described above (FDR &lt; 0.1 and logFC &gt; 1) where genes and samples are forced to group by row and column similarity respectivelty.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">heatmap.2</span>(HMdata,</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="op">+</span><span class="st">           </span><span class="dt">Rowv =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="op">+</span><span class="st">           </span><span class="dt">Colv =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="op">+</span><span class="st">           </span><span class="dt">dendrogram =</span> <span class="st">&quot;both&quot;</span>,</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5"><span class="op">+</span><span class="st">           </span><span class="dt">main =</span> <span class="st">&quot;Differentially expressed genes </span><span class="ch">\n</span><span class="st"> FDR &lt; 0,1, logFC &gt;=1&quot;</span>,</a>
+<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="op">+</span><span class="st">           </span><span class="dt">scale =</span> <span class="st">&quot;row&quot;</span>,</a>
+<a class="sourceLine" id="cb45-7" data-line-number="7"><span class="op">+</span><span class="st">           </span><span class="dt">col =</span> my_palette,</a>
+<a class="sourceLine" id="cb45-8" data-line-number="8"><span class="op">+</span><span class="st">           </span><span class="dt">sepcolor =</span> <span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="op">+</span><span class="st">           </span><span class="dt">sepwidth =</span> <span class="kw">c</span>(<span class="fl">0.05</span>,<span class="fl">0.05</span>),</a>
+<a class="sourceLine" id="cb45-10" data-line-number="10"><span class="op">+</span><span class="st">           </span><span class="dt">cexRow =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb45-11" data-line-number="11"><span class="op">+</span><span class="st">           </span><span class="dt">cexCol =</span> <span class="fl">0.9</span>,</a>
+<a class="sourceLine" id="cb45-12" data-line-number="12"><span class="op">+</span><span class="st">           </span><span class="dt">key =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb45-13" data-line-number="13"><span class="op">+</span><span class="st">           </span><span class="dt">keysize =</span> <span class="fl">1.5</span>,</a>
+<a class="sourceLine" id="cb45-14" data-line-number="14"><span class="op">+</span><span class="st">           </span><span class="dt">density.info =</span> <span class="st">&quot;histogram&quot;</span>,</a>
+<a class="sourceLine" id="cb45-15" data-line-number="15"><span class="op">+</span><span class="st">           </span><span class="dt">ColSideColors =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;red&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;blue&quot;</span>,<span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;green&quot;</span>,<span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;yellow&quot;</span>,<span class="dv">3</span>)),</a>
+<a class="sourceLine" id="cb45-16" data-line-number="16"><span class="op">+</span><span class="st">           </span><span class="dt">tracecol =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb45-17" data-line-number="17"><span class="op">+</span><span class="st">           </span><span class="dt">srtCol =</span> <span class="dv">30</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:heatmapClustering"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/heatmapClustering-1.png" alt="Heatmap for expression data grouping genes (rows) and samples (columns) by their similarity" width="672" />
+<p class="caption">
+Figure 4.12: Heatmap for expression data grouping genes (rows) and samples (columns) by their similarity
+</p>
+</div>
+</div>
+<div id="biological-significance-of-results" class="section level2">
+<h2><span class="header-section-number">4.20</span> Biological Significance of results</h2>
+<p>Once a list of gene has being obtained that characterizes the difference between two conditions it has to be interpreted. Although this requires, of course, a good understanding of the underlying biological problem, a statistical approach known as “Gene Set Analysis” can be useful for suggesting ideas for the interpretation.</p>
+<p>With this aim these types of analyses seek to establish whether, given a list of genes selected for being differential expressed between two conditions, the functions, biological processes or molecular pathways that characterize them appear on this list more frequently than among the rest of the genes analyzed.</p>
+<p>There are many variants of these types of analysis, see <span class="citation">Khatri, Sirota, and Butte (<a href="#ref-Khatri2012">2012</a>)</span>, but here we will use the basic enrichment analysis as described in implemented in the <code>ReactomePA</code> Bioconductor package. The analysis is done on the ReactomePA annotation database <a href="https://reactome.org/">https://reactome.org/</a>.</p>
+<p>Analyses of this type need a minimum number of genes to be reliable, preferably a few hundreds than a few dozens, so it is common to perform a selection less restrictive than with the previous steps.
+For instance an option is to include all genes with a non-stringent FDR cutoff, such as FDR &lt; 0.15 without filtering by minimum “fold-change”).</p>
+<p>As a first step we prepare the list of gene lists that will be analyzed:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>listOfTables &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">KOvsWT.COLD =</span> topTab_KOvsWT.COLD, </a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="op">+</span><span class="st">                      </span><span class="dt">KOvsWT.RT  =</span> topTab_KOvsWT.RT, </a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="op">+</span><span class="st">                      </span><span class="dt">INT =</span> topTab_INT)</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span>listOfSelected &lt;-<span class="st"> </span><span class="kw">list</span>()</a>
+<a class="sourceLine" id="cb46-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(listOfTables)){</a>
+<a class="sourceLine" id="cb46-6" data-line-number="6"><span class="op">+</span><span class="st">   </span><span class="co"># select the toptable</span></a>
+<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="op">+</span><span class="st">   </span>topTab &lt;-<span class="st"> </span>listOfTables[[i]]</a>
+<a class="sourceLine" id="cb46-8" data-line-number="8"><span class="op">+</span><span class="st">   </span><span class="co"># select the genes to be included in the analysis</span></a>
+<a class="sourceLine" id="cb46-9" data-line-number="9"><span class="op">+</span><span class="st">   </span>whichGenes&lt;-topTab[<span class="st">&quot;adj.P.Val&quot;</span>]<span class="op">&lt;</span><span class="fl">0.15</span></a>
+<a class="sourceLine" id="cb46-10" data-line-number="10"><span class="op">+</span><span class="st">   </span>selectedIDs &lt;-<span class="st"> </span><span class="kw">rownames</span>(topTab)[whichGenes]</a>
+<a class="sourceLine" id="cb46-11" data-line-number="11"><span class="op">+</span><span class="st">   </span><span class="co"># convert the ID to Entrez</span></a>
+<a class="sourceLine" id="cb46-12" data-line-number="12"><span class="op">+</span><span class="st">   </span>EntrezIDs&lt;-<span class="st"> </span><span class="kw">select</span>(mogene21sttranscriptcluster.db, selectedIDs, <span class="kw">c</span>(<span class="st">&quot;ENTREZID&quot;</span>))</a>
+<a class="sourceLine" id="cb46-13" data-line-number="13"><span class="op">+</span><span class="st">   </span>EntrezIDs &lt;-<span class="st"> </span>EntrezIDs<span class="op">$</span>ENTREZID</a>
+<a class="sourceLine" id="cb46-14" data-line-number="14"><span class="op">+</span><span class="st">   </span>listOfSelected[[i]] &lt;-<span class="st"> </span>EntrezIDs</a>
+<a class="sourceLine" id="cb46-15" data-line-number="15"><span class="op">+</span><span class="st">   </span><span class="kw">names</span>(listOfSelected)[i] &lt;-<span class="st"> </span><span class="kw">names</span>(listOfTables)[i]</a>
+<a class="sourceLine" id="cb46-16" data-line-number="16"><span class="op">+</span><span class="st"> </span>}</a>
+<a class="sourceLine" id="cb46-17" data-line-number="17"><span class="op">&gt;</span><span class="st"> </span><span class="kw">sapply</span>(listOfSelected, length)</a></code></pre></div>
+<pre><code>KOvsWT.COLD   KOvsWT.RT         INT 
+        769         453          85 </code></pre>
+<p>The analysis also requires to have the Entrez Identifiers for all genes analyzed.
+It is an open discussion if what one should use is “all genes analyzed” -that is genes that have been retained in the analysis and are part of the “topTable”- or all genes available. In this case we use the second option and define our universe to be all genes that have at least one annotation in the Gene Ontology</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>mapped_genes2GO &lt;-<span class="st"> </span><span class="kw">mappedkeys</span>(org.Mm.egGO)</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span>mapped_genes2KEGG &lt;-<span class="st"> </span><span class="kw">mappedkeys</span>(org.Mm.egPATH)</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>mapped_genes &lt;-<span class="st"> </span><span class="kw">union</span>(mapped_genes2GO , mapped_genes2KEGG)</a></code></pre></div>
+<p>The Biological significance analysis will be applied only to the first two lists. Sometimes yet another decomposition is applied so that up and downregulated genes are separately analyzed. This will not be done here because there is no clear biological argument to proceed so in all cases.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(ReactomePA)</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="er">&gt;</span><span class="st"> </span>listOfData &lt;-<span class="st"> </span>listOfSelected[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb49-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span>comparisonsNames &lt;-<span class="st"> </span><span class="kw">names</span>(listOfData)</a>
+<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span>universe &lt;-<span class="st"> </span>mapped_genes</a>
+<a class="sourceLine" id="cb49-6" data-line-number="6"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-7" data-line-number="7"><span class="er">&gt;</span><span class="st"> </span><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(listOfData)){</a>
+<a class="sourceLine" id="cb49-8" data-line-number="8"><span class="op">+</span><span class="st">   </span>genesIn &lt;-<span class="st"> </span>listOfData[[i]]</a>
+<a class="sourceLine" id="cb49-9" data-line-number="9"><span class="op">+</span><span class="st">   </span>comparison &lt;-<span class="st"> </span>comparisonsNames[i]</a>
+<a class="sourceLine" id="cb49-10" data-line-number="10"><span class="op">+</span><span class="st">   </span>enrich.result &lt;-<span class="st"> </span><span class="kw">enrichPathway</span>(<span class="dt">gene =</span> genesIn,</a>
+<a class="sourceLine" id="cb49-11" data-line-number="11"><span class="op">+</span><span class="st">                                  </span><span class="dt">pvalueCutoff =</span> <span class="fl">0.05</span>,</a>
+<a class="sourceLine" id="cb49-12" data-line-number="12"><span class="op">+</span><span class="st">                                  </span><span class="dt">readable =</span> T,</a>
+<a class="sourceLine" id="cb49-13" data-line-number="13"><span class="op">+</span><span class="st">                                  </span><span class="dt">pAdjustMethod =</span> <span class="st">&quot;BH&quot;</span>,</a>
+<a class="sourceLine" id="cb49-14" data-line-number="14"><span class="op">+</span><span class="st">                                  </span><span class="dt">organism =</span> <span class="st">&quot;mouse&quot;</span>,</a>
+<a class="sourceLine" id="cb49-15" data-line-number="15"><span class="op">+</span><span class="st">                                  </span><span class="dt">universe =</span> universe)</a>
+<a class="sourceLine" id="cb49-16" data-line-number="16"><span class="op">+</span><span class="st">   </span></a>
+<a class="sourceLine" id="cb49-17" data-line-number="17"><span class="op">+</span><span class="st">   </span><span class="kw">cat</span>(<span class="st">&quot;##################################&quot;</span>)</a>
+<a class="sourceLine" id="cb49-18" data-line-number="18"><span class="op">+</span><span class="st">   </span><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Comparison: &quot;</span>, comparison,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb49-19" data-line-number="19"><span class="op">+</span><span class="st">   </span><span class="kw">print</span>(<span class="kw">head</span>(enrich.result))</a>
+<a class="sourceLine" id="cb49-20" data-line-number="20"><span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-21" data-line-number="21"><span class="op">+</span><span class="st">   </span><span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">rownames</span>(enrich.result<span class="op">@</span>result)) <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb49-22" data-line-number="22"><span class="op">+</span><span class="st">   </span><span class="kw">write.csv</span>(<span class="kw">as.data.frame</span>(enrich.result), </a>
+<a class="sourceLine" id="cb49-23" data-line-number="23"><span class="op">+</span><span class="st">              </span><span class="dt">file =</span><span class="kw">paste0</span>(<span class="st">&quot;./results/&quot;</span>,<span class="st">&quot;ReactomePA.Results.&quot;</span>,comparison,<span class="st">&quot;.csv&quot;</span>), </a>
+<a class="sourceLine" id="cb49-24" data-line-number="24"><span class="op">+</span><span class="st">              </span><span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb49-25" data-line-number="25"><span class="op">+</span><span class="st">   </span></a>
+<a class="sourceLine" id="cb49-26" data-line-number="26"><span class="op">+</span><span class="st">   </span><span class="kw">pdf</span>(<span class="dt">file=</span><span class="kw">paste0</span>(<span class="st">&quot;./results/&quot;</span>,<span class="st">&quot;ReactomePABarplot.&quot;</span>,comparison,<span class="st">&quot;.pdf&quot;</span>))</a>
+<a class="sourceLine" id="cb49-27" data-line-number="27"><span class="op">+</span><span class="st">     </span><span class="kw">print</span>(<span class="kw">barplot</span>(enrich.result, <span class="dt">showCategory =</span> <span class="dv">15</span>, <span class="dt">font.size =</span> <span class="dv">4</span>, </a>
+<a class="sourceLine" id="cb49-28" data-line-number="28"><span class="op">+</span><span class="st">             </span><span class="dt">title =</span> <span class="kw">paste0</span>(<span class="st">&quot;Reactome Pathway Analysis for &quot;</span>, comparison,<span class="st">&quot;. Barplot&quot;</span>)))</a>
+<a class="sourceLine" id="cb49-29" data-line-number="29"><span class="op">+</span><span class="st">   </span><span class="kw">dev.off</span>()</a>
+<a class="sourceLine" id="cb49-30" data-line-number="30"><span class="op">+</span><span class="st">   </span></a>
+<a class="sourceLine" id="cb49-31" data-line-number="31"><span class="op">+</span><span class="st">   </span><span class="kw">pdf</span>(<span class="dt">file =</span> <span class="kw">paste0</span>(<span class="st">&quot;./results/&quot;</span>,<span class="st">&quot;ReactomePAcnetplot.&quot;</span>,comparison,<span class="st">&quot;.pdf&quot;</span>))</a>
+<a class="sourceLine" id="cb49-32" data-line-number="32"><span class="op">+</span><span class="st">     </span><span class="kw">print</span>(<span class="kw">cnetplot</span>(enrich.result, <span class="dt">categorySize =</span> <span class="st">&quot;geneNum&quot;</span>, <span class="dt">schowCategory =</span> <span class="dv">15</span>, </a>
+<a class="sourceLine" id="cb49-33" data-line-number="33"><span class="op">+</span><span class="st">          </span><span class="dt">vertex.label.cex =</span> <span class="fl">0.75</span>))</a>
+<a class="sourceLine" id="cb49-34" data-line-number="34"><span class="op">+</span><span class="st">   </span><span class="kw">dev.off</span>()</a>
+<a class="sourceLine" id="cb49-35" data-line-number="35"><span class="op">+</span><span class="st">   </span>}</a>
+<a class="sourceLine" id="cb49-36" data-line-number="36"><span class="op">+</span><span class="st"> </span>}</a></code></pre></div>
+<pre><code>##################################
+Comparison:  KOvsWT.COLD 
+                         ID                                  Description
+R-MMU-75105     R-MMU-75105                  Fatty acyl-CoA biosynthesis
+R-MMU-8978868 R-MMU-8978868                        Fatty acid metabolism
+R-MMU-75876     R-MMU-75876 Synthesis of very long-chain fatty acyl-CoAs
+              GeneRatio  BgRatio       pvalue   p.adjust     qvalue
+R-MMU-75105       8/329  33/8698 2.332981e-05 0.01558431 0.01558431
+R-MMU-8978868    18/329 168/8698 6.210131e-05 0.02074184 0.02074184
+R-MMU-75876       6/329  22/8698 1.248588e-04 0.02780190 0.02780190
+                                                                                                                         geneID
+R-MMU-75105                                                                 Elovl2/Acsl5/Elovl7/Elovl3/Acsl4/Hsd17b12/Cbr4/Ppt2
+R-MMU-8978868 Aloxe3/Cyp4a14/Ptgds/Abcd1/Acot1/Elovl2/Acsl5/Elovl7/Crot/Elovl3/Acads/Cpt1a/Acsl4/Acot6/Dpep2/Hsd17b12/Cbr4/Ppt2
+R-MMU-75876                                                                           Elovl2/Acsl5/Elovl7/Elovl3/Acsl4/Hsd17b12
+              Count
+R-MMU-75105       8
+R-MMU-8978868    18
+R-MMU-75876       6</code></pre>
+<pre><code>##################################
+Comparison:  KOvsWT.RT 
+                         ID                                 Description
+R-MMU-1483249 R-MMU-1483249               Inositol phosphate metabolism
+R-MMU-400451   R-MMU-400451 Free fatty acids regulate insulin secretion
+R-MMU-977606   R-MMU-977606            Regulation of Complement cascade
+R-MMU-112043   R-MMU-112043                    PLC beta mediated events
+R-MMU-112040   R-MMU-112040                   G-protein mediated events
+R-MMU-1855204 R-MMU-1855204     Synthesis of IP3 and IP4 in the cytosol
+              GeneRatio BgRatio       pvalue   p.adjust     qvalue
+R-MMU-1483249     7/201 46/8698 7.898619e-05 0.01721053 0.01583064
+R-MMU-400451      4/201 11/8698 8.042305e-05 0.01721053 0.01583064
+R-MMU-977606      6/201 37/8698 1.806995e-04 0.02088957 0.01921470
+R-MMU-112043      6/201 38/8698 2.104972e-04 0.02088957 0.01921470
+R-MMU-112040      6/201 39/8698 2.440370e-04 0.02088957 0.01921470
+R-MMU-1855204     5/201 27/8698 3.344361e-04 0.02385644 0.02194370
+                                                  geneID Count
+R-MMU-1483249 Isyna1/Nudt4/Inpp5d/Pld4/Plcb3/Plcb2/Plcb1     7
+R-MMU-400451                     Plcb3/Plcb2/Acsl4/Plcb1     4
+R-MMU-977606               Cpn2/C1qb/C3ar1/Cfh/C1qc/C1qa     6
+R-MMU-112043         Prkcd/Adcy5/Plcb3/Gnai1/Plcb2/Plcb1     6
+R-MMU-112040         Prkcd/Adcy5/Plcb3/Gnai1/Plcb2/Plcb1     6
+R-MMU-1855204              Inpp5d/Pld4/Plcb3/Plcb2/Plcb1     5</code></pre>
+<p>The results obtained in the analysis of biological significance are:</p>
+<ul>
+<li>a <em>.csv</em> file with a summary of all the enriched pathways and the associated statistics.</li>
+<li>a bar plot with the best enriched pathways. Height of the bar plot is the number of genes of our analysis related with that pathway. Moreover, pathways are ordered by statistical significance.</li>
+<li>a plot with a network of the enriched pathways and the relation among the genes included.</li>
+</ul>
+<p>Figure <a href="methods.html#fig:network">4.13</a> shows the network produced from the genes selected in the comparison “KO and WT in RT”</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="op">&gt;</span><span class="st">   </span><span class="kw">cnetplot</span>(enrich.result, <span class="dt">categorySize =</span> <span class="st">&quot;geneNum&quot;</span>, <span class="dt">schowCategory =</span> <span class="dv">15</span>, </a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="op">+</span><span class="st">          </span><span class="dt">vertex.label.cex =</span> <span class="fl">0.75</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:network"></span>
+<img src="Case_Study_1-Microarrays_Analysis-Bookdown_files/figure-html/network-1.png" alt="Network obtained from the Reactome enrichment analysis on the list obtained from the comparison between KO and WT in RT" width="672" />
+<p class="caption">
+Figure 4.13: Network obtained from the Reactome enrichment analysis on the list obtained from the comparison between KO and WT in RT
+</p>
+</div>
+<p>In our study for comparison <em>KOvsWT.COLD</em> three enriched pathway have been found, for example <em>Synthesis of very long-chain fatty acyl-CoAs</em>, and in comparison <em>KOvsCTL.RT</em>, five enriched pathways have been found (Table <a href="methods.html#tab:tableReacto">4.2</a>). An interesting one is <em>Inositol phosphate metabolism</em>.</p>
+<table>
+<caption><span id="tab:tableReacto">Table 4.2: </span>First rows and columns for Reactome results on KOvsWT.RT.csv comparison</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Description</th>
+<th align="left">GeneRatio</th>
+<th align="left">BgRatio</th>
+<th align="left">pvalue</th>
+<th align="left">p.adjust</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R-MMU-1483249</td>
+<td align="left">Inositol phosphate metabolism</td>
+<td align="left">7/201</td>
+<td align="left">46/8698</td>
+<td align="left">7.89861917854937e-05</td>
+<td align="left">0.017210532182374</td>
+</tr>
+<tr class="even">
+<td>R-MMU-400451</td>
+<td align="left">Free fatty acids regulate insulin secretion</td>
+<td align="left">4/201</td>
+<td align="left">11/8698</td>
+<td align="left">8.0423047581187e-05</td>
+<td align="left">0.017210532182374</td>
+</tr>
+<tr class="odd">
+<td>R-MMU-977606</td>
+<td align="left">Regulation of Complement cascade</td>
+<td align="left">6/201</td>
+<td align="left">37/8698</td>
+<td align="left">0.000180699532427207</td>
+<td align="left">0.0208895657554835</td>
+</tr>
+<tr class="even">
+<td>R-MMU-112043</td>
+<td align="left">PLC beta mediated events</td>
+<td align="left">6/201</td>
+<td align="left">38/8698</td>
+<td align="left">0.000210497172826187</td>
+<td align="left">0.0208895657554835</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summary-of-results" class="section level2">
+<h2><span class="header-section-number">4.21</span> Summary of results</h2>
+<p>Once the process has been completed one has obtained a, sometimes long, list of files with the data and the analysis results. These files are of the basis for discussing the results and looking for a biological interpretation. Both aspects exceed the goals of this chapter so they are ommited here.</p>
+<p>It is useful to create a file with the type, name and description of all the files generated along the analysis. Table <a href="methods.html#tab:listOfFiles">4.3</a> shows the list of files generated in the current case study.</p>
+<table>
+<caption><span id="tab:listOfFiles">Table 4.3: </span>List of files generated in the analysis</caption>
+<thead>
+<tr class="header">
+<th align="left">List_of_Files</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">data4Heatmap.csv</td>
+</tr>
+<tr class="even">
+<td align="left">normalized.Data.csv</td>
+</tr>
+<tr class="odd">
+<td align="left">normalized.Data.Rda</td>
+</tr>
+<tr class="even">
+<td align="left">normalized.Filtered.Data.csv</td>
+</tr>
+<tr class="odd">
+<td align="left">QCDir.Norm</td>
+</tr>
+<tr class="even">
+<td align="left">ReactomePA.Results.KOvsWT.COLD.csv</td>
+</tr>
+<tr class="odd">
+<td align="left">ReactomePA.Results.KOvsWT.RT.csv</td>
+</tr>
+<tr class="even">
+<td align="left">ReactomePABarplot.KOvsWT.COLD.pdf</td>
+</tr>
+<tr class="odd">
+<td align="left">ReactomePABarplot.KOvsWT.RT.pdf</td>
+</tr>
+<tr class="even">
+<td align="left">ReactomePAcnetplot.KOvsWT.COLD.pdf</td>
+</tr>
+<tr class="odd">
+<td align="left">ReactomePAcnetplot.KOvsWT.RT.pdf</td>
+</tr>
+<tr class="even">
+<td align="left">topAnnotated_INT.csv</td>
+</tr>
+<tr class="odd">
+<td align="left">topAnnotated_KOvsWT_COLD.csv</td>
+</tr>
+<tr class="even">
+<td align="left">topAnnotated_KOvsWT_RT.csv</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Allison2006">
+<p>Allison, David B., Xiangqin Cui, Grier P. Page, and Mahyar Sabripour. 2006. “Microarray data analysis: From disarray to consolidation and consensus.” <em>Nature Reviews Genetics</em> 7 (1): 55–65. <a href="https://doi.org/10.1038/nrg1749">https://doi.org/10.1038/nrg1749</a>.</p>
+</div>
+<div id="ref-Benjamini1995">
+<p>Benjamini, Yoav, and Yosef Hochberg. 1995. “Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.” <em>Source Journal of the Royal Statistical Society. Series B (Methodological)</em> 57 (1): 289–300. <a href="http://www.jstor.org/stable/2346101 http://www.jstor.org/ http://www.jstor.org/action/showPublisher?publisherCode=black.">http://www.jstor.org/stable/2346101 http://www.jstor.org/ http://www.jstor.org/action/showPublisher?publisherCode=black.</a></p>
+</div>
+<div id="ref-Chrominski2015">
+<p>Chrominski, Kornel, and Magdalena Tkacz. 2015. “Comparison of High-Level Microarray Analysis Methods in the Context of Result Consistency.” <em>PLOS ONE</em> 10 (6). Public Library of Science: e0128845. <a href="https://doi.org/10.1371/JOURNAL.PONE.0128845">https://doi.org/10.1371/JOURNAL.PONE.0128845</a>.</p>
+</div>
+<div id="ref-Hackstadt2009">
+<p>Hackstadt, Amber J, and Ann M Hess. 2009. “Filtering for increased power for microarray data analysis.” <em>BMC Bioinformatics</em> 10 (January). BioMed Central: 11. <a href="https://doi.org/10.1186/1471-2105-10-11">https://doi.org/10.1186/1471-2105-10-11</a>.</p>
+</div>
+<div id="ref-rmaIri">
+<p>Irizarry, Rafael A., Bridget Hobbs, Francois Collin, Yasmin D. Beazer‐Barclay, Kristen J. Antonellis, Uwe Scherf, and Terence P. Speed. 2003. “Exploration, Normalization, and Summaries of High Density Oligonucleotide Array Probe Level Data.” <em>Biostatistics</em> 4 (2): 249–64. <a href="https://doi.org/10.1093/biostatistics/4.2.249">https://doi.org/10.1093/biostatistics/4.2.249</a>.</p>
+</div>
+<div id="ref-Jeanmougin2010">
+<p>Jeanmougin, Marine, Aurelien de Reynies, Laetitia Marisa, Caroline Paccard, Gregory Nuel, and Mickael Guedj. 2010. “Should We Abandon the t-Test in the Analysis of Gene Expression Microarray Data: A Comparison of Variance Modeling Strategies.” Edited by Kerby Shedden. <em>PLoS ONE</em> 5 (9). Public Library of Science: e12336. <a href="https://doi.org/10.1371/journal.pone.0012336">https://doi.org/10.1371/journal.pone.0012336</a>.</p>
+</div>
+<div id="ref-Khatri2012">
+<p>Khatri, Purvesh, Marina Sirota, and Atul J. Butte. 2012. “Ten Years of Pathway Analysis: Current Approaches and Outstanding Challenges.” <em>PLOS Computational Biology</em> 8 (2): e1002375. <a href="https://doi.org/10.1371/journal.pcbi.1002375">https://doi.org/10.1371/journal.pcbi.1002375</a>.</p>
+</div>
+<div id="ref-Smyth2005">
+<p>Smyth, G. K. 2005. “limma: Linear Models for Microarray Data.” In <em>Bioinformatics and Computational Biology Solutions Using R and Bioconductor</em>, 397–420. New York: Springer-Verlag. <a href="https://doi.org/10.1007/0-387-29362-0_23">https://doi.org/10.1007/0-387-29362-0_23</a>.</p>
+</div>
+<div id="ref-Smyth2004">
+<p>Smyth, Gordon K. 2004. “Linear Models and Empirical Bayes Methods for Assessing Differential Expression in Microarray Experiments.” <em>Statistical Applications in Genetics and Molecular Biology</em> 3 (1): 1–25. <a href="https://doi.org/10.2202/1544-6115.1027">https://doi.org/10.2202/1544-6115.1027</a>.</p>
+</div>
+<div id="ref-Tusher2001">
+<p>Tusher, V G, R Tibshirani, and G Chu. 2001. “Significance analysis of microarrays applied to the ionizing radiation response.” <em>Proceedings of the National Academy of Sciences of the United States of America</em> 98 (9): 5116–21. <a href="https://doi.org/10.1073/pnas.091062498">https://doi.org/10.1073/pnas.091062498</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="materials.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="notes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
