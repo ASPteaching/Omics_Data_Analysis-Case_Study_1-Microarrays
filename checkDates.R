@@ -1,0 +1,8 @@
+setwd("C:/Users/asanc/Dropbox (VHIR)/SotaCV/Omics_Data_Analysis-Case_Study_1-Microarrays")
+targets <- read.csv2("./data/targets.csv", header = TRUE, sep = ";") 
+# BiocManager::install("affyio")
+library(affyio)
+theFileNames <- paste("data",targets$FileName, sep="/")
+myDates <- get.celfile.dates(filenames=theFileNames,info="basic")
+days <-paste0("Day",rep(1:2,6))
+targets$ProcessingDate <- as.factor(days)
