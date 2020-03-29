@@ -1,9 +1,7 @@
 ---
-title: |
-  | Statistical Analysis of Microarray data  
-  | (adapted for teaching purposes)  
+title: "Statistical Analysis of Microarray data"
 author: "Based on Gonzalo, Ricardo and Sanchez-Pla, Alex (2019)"
-date: "March 2020"
+date: "March 29, 2020"
 output:
  prettydoc::html_pretty:
     toc: true
@@ -273,16 +271,6 @@ Note that we have defined in the function some parameters to facilitate the visu
   + the characteristic to color the samples, coded in the _Group_ column in targets
   + the colors of each group
 
-If necessary, it is easy to save the plots to a _tiff_ file with the following code:
-
-```{r savePCAraw, echo=TRUE, results='hide', eval=FALSE}
-tiff("figures/PCA_RawData.tiff", res = 200, width = 4.5, height = 4, units = 'in')
-plotPCA3(exprs(rawData), labels = targets$ShortName, factor = targets$Group, 
-         title="Raw data", scale = FALSE, size = 2, 
-         colores = c("red", "blue", "green", "yellow"))
-dev.off()
-```
-
 First component of the PCA accounts for 55.9% of the total variability of the samples, and as we can observe in the plot, this variability is mainly contributed by the _temperature_ condition since samples incubated to 4 degrees are on the right and samples incubated at room temperature are on the left.
 
 In the same way, we can easily visualize the intensity distribution of the arrays using boxplots. Figure \@ref(fig:BoxplotRaw) shows a multiple boxplot depicting the distribution of the intensities along all samples.
@@ -292,15 +280,6 @@ boxplot(rawData, cex.axis=0.5, las=2,  which="all",
          col = c(rep("red", 3), rep("blue", 3), rep("green", 3), rep("yellow", 3)),
          main="Distribution of raw intensity values")
 ```
-
-```{r saveIntensRaw, echo=FALSE, results='hide', eval=FALSE}
-tiff("figures/Intensity_RawData.tiff", res = 200, width = 4, height = 4, units = 'in')
-boxplot(rawData, cex.axis=0.5, las=2,  which="all", 
-         col = c(rep("red", 3), rep("blue", 3), rep("green", 3), rep("yellow", 3)),
-         main="Distribution of raw intensity values")
-dev.off()
-```
-
 
 A light variation of intensity among arrays is observed, but this is the expected for raw data.
 
@@ -326,20 +305,12 @@ Figure \@ref(fig:QCNormDataRes) shows the same summary as before, but performed 
 knitr::include_graphics("figures/Figure6.png")
 ```
 
-Figure \@ref(fig:PCANorm) shows the scatterplot of the first two principal components performed on normalized data.  
+Figure \@ref(PCANorm) shows the scatterplot of the first two principal components performed on normalized data.  
 
-```{r PCANorm, message=FALSE, fig.cap="Visualization of first two principal components for normalized data"}
+```{r fig:PCANorm, message=FALSE, fig.cap="Visualization of first two principal components for normalized data"}
 plotPCA3(exprs(eset_rma), labels = targets$ShortName, factor = targets$Group, 
          title="Normalized data", scale = FALSE, size = 3, 
          colores = c("red", "blue", "green", "yellow"))
-```
-
-```{r savePCAnorm, echo=FALSE, results='hide', eval=FALSE}
-tiff("figures/PCA_NormData.tiff", res = 150, width = 5, height = 5, units = 'in')
-plotPCA3(exprs(eset_rma), labels = targets$ShortName, factor = targets$Group, 
-         title="Normalized data", scale = FALSE, size = 2, 
-         colores = c("red", "blue", "green", "yellow"))
-dev.off()
 ```
 
 Now first component accounts for 33% of the total variability. Notice that the percentage of explained variability has decreased with respect to PCA performed on raw data. Similarly as with the PCA with raw data, it separates samples from _COLD_ level of _temperature_ condition on the right, and samples from _RT_ level on the left. It is important to note that there are one sample from group _KO.RT_ that groups near __WT.RT__ and viceversa. It could be an issue of mislabeling of samples that should be checked with the laboratory that has processed the samples.
@@ -350,14 +321,6 @@ Figure \@ref(fig:BoxplotNorm) shows a multiple boxplot depicting the distributio
 boxplot(eset_rma, cex.axis=0.5, las=2,  which="all", 
          col = c(rep("red", 3), rep("blue", 3), rep("green", 3), rep("yellow", 3)),
          main="Boxplot for arrays intensity: Normalized Data")
-```
-
-```{r saveIntensNorm, echo=FALSE, results='hide', eval=FALSE}
-tiff("figures/Intensity_NormData.tiff", res = 150, width = 5, height = 5, units = 'in')
-boxplot(eset_rma, cex.axis=0.5, las=2,  which="all", 
-         col = c(rep("red", 3), rep("blue", 3), rep("green", 3), rep("yellow", 3)),
-         main="Boxplot for arrays intensity: Normalized Data")
-dev.off()
 ```
 
 ## Batch detection
@@ -394,20 +357,6 @@ new_values = round(values , 3)
 text(bp,pvcaObj$dat,labels = new_values, pos=3, cex = 0.7)
 ```
 
-```{r savePVCAplot, echo=FALSE, results='hide', eval=FALSE}
-tiff("figures/PVCAplot.tiff", res = 150, width = 5, height = 5, units = 'in')
-bp <- barplot(pvcaObj$dat, xlab = "Effects",
-  ylab = "Weighted average proportion variance",
-  ylim= c(0,1.1),col = c("mediumorchid"), las=2,
-  main="PVCA estimation")
-axis(1, at = bp, labels = pvcaObj$label, cex.axis = 0.45, las=2)
-values = pvcaObj$dat
-new_values = round(values , 3)
-text(bp,pvcaObj$dat,labels = new_values, pos=3, cex = 0.5)
-dev.off()
-```
-
-
 ## Detecting most variable genes
 
 Selection of differentially expressed genes is affected by the number of genes on which we make it. The higher the number, the greater the necessary adjustment of p-values (as will be seen below), which will lead us to end up miscarrying more genes.
@@ -422,15 +371,6 @@ plot(1:length(sdsO), sdsO, main="Distribution of variability for all genes",
      sub="Vertical lines represent 90% and 95% percentiles",
      xlab="Gene index (from least to most variable)", ylab="Standard deviation")
 abline(v=length(sds)*c(0.9,0.95))
-```
-
-```{r saveSDplot, echo=FALSE, results='hide', eval=FALSE}
-tiff("figures/SDplot.tiff", res = 150, width = 5, height = 5, units = 'in')
-plot(1:length(sdsO), sdsO, main="Distribution of variability for all genes",
-     sub="Vertical lines represent 90% and 95% percentiles",
-     xlab="Gene index (from least to most variable)", ylab="Standard deviation")
-abline(v=length(sds)*c(0.9,0.95))
-dev.off()
 ```
 
 ## Filtering least variable genes
@@ -627,17 +567,9 @@ SYMBOLS<- geneSymbols$SYMBOL
 volcanoplot(fit.main, coef=1, highlight=4, names=SYMBOLS, 
             main=paste("Differentially expressed genes", colnames(cont.matrix)[1], sep="\n"))
   abline(v=c(-1,1))
-
 ```
 
-```{r saveVolcanos, echo=FALSE, results='hide', eval=FALSE}
-tiff("figures/VolcanoPlot.tiff", res = 150, width = 5, height = 5, units = 'in')
-volcanoplot(fit.main, coef=1, highlight=4, names=SYMBOLS, 
-            main=paste("Differentially expressed genes", colnames(cont.matrix)[1], sep="\n")) 
-abline(v=c(-1,1))
-
-dev.off()
-
+```{r saveVolcanos, echo=FALSE, results='hide'}
 pdf("figures/Volcanos.pdf")
 for (i in colnames(cont.matrix)){
   volcanoplot(fit.main, coef=i, highlight=4, names=SYMBOLS,
@@ -673,12 +605,6 @@ vennDiagram (res.selected[,1:3], cex=0.9)
 title("Genes in common between the three comparisons\n Genes selected with FDR < 0.1 and logFC > 1")
 ```
 
-```{r vennPlot, echo=FALSE, results='hide', eval=FALSE}
-tiff("figures/VennPlot.tiff", res = 150, width = 5.5, height = 5.5, units = 'in')
-vennDiagram (res.selected[,1:3], cex=0.9)
-title("Genes in common between the three comparisons\n Genes selected with FDR < 0.1 and logFC > 1")
-dev.off()
-```
 
 ## Heatmaps
 
@@ -746,48 +672,6 @@ heatmap.2(HMdata,
           tracecol = NULL,
           srtCol = 30)
 
-```
-
-```{r, echo=FALSE,  results='hide', eval=FALSE}
-tiff("figures/Heatmap1.tiff", res = 150, width = 5.5, height = 5.5, units = 'in')
-heatmap.2(HMdata,
-          Rowv = TRUE,
-          Colv = TRUE,
-          main = "Differentially expressed genes \n FDR < 0,1, logFC >=1",
-          scale = "row",
-          col = my_palette,
-          sepcolor = "white",
-          sepwidth = c(0.05,0.05),
-          cexRow = 0.5,
-          cexCol = 0.9,
-          key = TRUE,
-          keysize = 1.5,
-          density.info = "histogram",
-          ColSideColors = c(rep("red",3),rep("blue",3), rep("green",3), rep("yellow",3)),
-          tracecol = NULL,
-          dendrogram = "both",
-          srtCol = 30)
-dev.off()
-
-tiff("figures/Heatmap2.tiff", res = 150, width = 5.5, height = 5.5, units = 'in')
-heatmap.2(HMdata,
-          Rowv = FALSE,
-          Colv = FALSE,
-          dendrogram = "none",
-          main = "Differentially expressed genes \n FDR < 0,1, logFC >=1",
-          scale = "row",
-          col = my_palette,
-          sepcolor = "white",
-          sepwidth = c(0.05,0.05),
-          cexRow = 0.5,
-          cexCol = 0.9,
-          key = TRUE,
-          keysize = 1.5,
-          density.info = "histogram",
-          ColSideColors = c(rep("red",3),rep("blue",3), rep("green",3), rep("yellow",3)),
-          tracecol = NULL,
-          srtCol = 30)
-dev.off()
 ```
 
 ## Biological Significance of results
