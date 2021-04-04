@@ -3,7 +3,7 @@
 // Script parameters - these are set up by R in the function 'writeReport' when copying the 
 //   template for this script from arrayQualityMetrics/inst/scripts into the report.
 
-var highlightInitial = [ false, false, false, false, false, false, false, false, false, true, false, false ];
+var highlightInitial = [ false, false, false, false, false, false, false, true, true, false, true, false ];
 var arrayMetadata    = [ [ "1", "WT.RT.1", "WT.RT", "WT", "RT", "WT.RT.1" ], [ "2", "WT.RT.2", "WT.RT", "WT", "RT", "WT.RT.2" ], [ "3", "WT.RT.3", "WT.RT", "WT", "RT", "WT.RT.3" ], [ "4", "KO.RT.1", "KO.RT", "KO", "RT", "KO.RT.1" ], [ "5", "KO.RT.2", "KO.RT", "KO", "RT", "KO.RT.2" ], [ "6", "KO.RT.3", "KO.RT", "KO", "RT", "KO.RT.3" ], [ "7", "WT.COLD.1", "WT.COLD", "WT", "COLD", "WT.COLD.1" ], [ "8", "WT.COLD.2", "WT.COLD", "WT", "COLD", "WT.COLD.2" ], [ "9", "WT.COLD.3", "WT.COLD", "WT", "COLD", "WT.COLD.3" ], [ "10", "KO.COLD.1", "KO.COLD", "KO", "COLD", "KO.COLD.1" ], [ "11", "KO.COLD.2", "KO.COLD", "KO", "COLD", "KO.COLD.2" ], [ "12", "KO.COLD.3", "KO.COLD", "KO", "COLD", "KO.COLD.3" ] ];
 var svgObjectNames   = [ "pca", "dens" ];
 
